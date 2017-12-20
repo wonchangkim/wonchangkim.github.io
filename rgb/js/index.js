@@ -1,4 +1,5 @@
 function random255(){
+
   return Math.floor(Math.random() * 256);
 }
 
@@ -9,3 +10,6 @@ function randomColor(){
 document.querySelectorAll('.box').forEach(el =>{
   el.style.backgroundColor = randomColor();
 })
+const el = document.querySelector('.box')
+
+el.eventListener('click',  )

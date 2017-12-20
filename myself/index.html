@@ -1,38 +1,70 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <title>자기소개</title>
 </head>
+
 <body>
     <div class="container">
-        <div class="bgc"><img class="bgcimg" src="/iamges/i6.png" alt="">
-        <div class="kakao">
-        <header>
-           <div class="statusbar">
-               <ul>
-                   <li>antena</li>
-                   <li>carrier</li>
-                   <li>wifi</li>
-                   <li>time</li>
-                   <li>bluetooth</li>
-                   <li>battery</li>
-                   <li>battrtyicon</li>
-               </ul>
-           </div>
-           <div class="menu"></div>
-        </header>
-        <main>
-            <div class="chat"></div>
-        </main>
-        <footer>
-            <div class="textinput"></div>
-            <div class="keyboard"></div>
-        </footer>
+        <div class="dec">
+            <h1 class="title">Intruduce by myself</h1>
+            <h3>2017.12.19</h3>
+            <h4>카톡보내기</h4>
+            <ul>
+                <li>이름</li>
+                <li>나이</li>
+                <li>좋아하는것</li>
+                <li>싫어하는것</li>
+            </ul>
         </div>
-    </div>
-</div>
+        <div class="kakao">
+            <div class="chatbgc">
+                <div class="statusbar">
+                    <ul>
+                        <li class="icon-signal"></li>
+                        <li class="carrier">KT</li>
+                        <li class="icon-wifi"></li>
+                        <li class="time">9:40PM</li>
+                        <li class="icon-bluetooth-b"></li>
+                        <li class="batterystatus">100%</li>
+                        <li class="icon-battery-4"></li>
+                    </ul>
+                </div>
+                <div class="menu">
+                    <span class="icon-angle-left"></span>
+                    <span class="id">김원창</span>
+                    <span class="icon-search-1"></span>
+                    <span class="icon-menu"></span>
+                </div>
+                <div class="anwser">
+                    <div class="profileimg"></div>
+                    <div class="anwsertxt">
+                        <span class="name">김원창</span>
+                        <div class="txtcontainer">
+                            <span class="anwtext">감사합니다.</span>
+                        </div>
+                        <span class="anwtime">오후10:37</span>
+                    </div>
+                </div>
+                <div class="requestrtxt">
+                    <span class="anwtime">오후10:37</span>
+                    <div class="requestxtcontainer">
+                        <span class="anwtext">잘해라.</span>
+                    </div>
+                </div>
+                <div class="inputtxt">
+                    <span class="icon-plus"></span>
+                    <form class="inputform" action="??">
+                        <input type="text" onkeydown="Enter_Check()">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="./js/index.js"></script>
 </body>
+
 </html>

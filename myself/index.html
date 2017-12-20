@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+
     <title>자기소개</title>
+    <link rel="stylesheet" href="./css/style.css">
+
 </head>
 
 <body>
@@ -40,26 +42,26 @@
                     <span class="icon-search-1"></span>
                     <span class="icon-menu"></span>
                 </div>
-                <div class="anwser">
-                    <div class="profileimg"></div>
-                    <div class="anwsertxt">
-                        <span class="name">김원창</span>
-                        <div class="txtcontainer">
-                            <span class="anwtext">감사합니다.</span>
+                <div class="chat-messages">
+                    <div class="chat-messages-list clearfix">
+                        <div class="anwser">
+                            <div class="profileimg"></div>
+                            <div class="anwtxtwrap">
+                                <span class="name">김원창</span>
+                                <span class="anwtext awschatbubble">감사합니다.</span>
+                                <span class="txttime">오후10:37</span>
+                            </div>
                         </div>
-                        <span class="anwtime">오후10:37</span>
                     </div>
+
                 </div>
-                <div class="requestrtxt">
-                    <span class="anwtime">오후10:37</span>
-                    <div class="requestxtcontainer">
-                        <span class="anwtext">잘해라.</span>
-                    </div>
-                </div>
+
+
                 <div class="inputtxt">
                     <span class="icon-plus"></span>
-                    <form class="inputform" action="??">
-                        <input type="text" onkeydown="Enter_Check()">
+                    <form class="inputform" action="javascript:getTxt()">
+                        <input id="inputres" type="text">
+                        <button onclick="getTxt()"></button>
                     </form>
                 </div>
             </div>

@@ -104,10 +104,18 @@ video,
 ul {
     list-style: none;
 }
-
+ol {
+    list-style: none;
+    
+}
 table {
     border-collapse: collapse;
     border-spacing: 0;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
 }
 
 .container {
@@ -223,68 +231,76 @@ table {
     display: inline-block;
 }
 
-.anwser {
-   
-    float: left;
-    margin-left: 10px;
-    margin-top: 10px;
-}
 
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+/* chat area */
+.chat-messages {
+    height: 385px;
+    width: 266px;
+    position: absolute;
+    background-color: darkorchid;
+    
+}
+.chat-messages-list{
+    padding: 10px 10px 10px 10px;  
+    background-color: aqua;
+}
+.anwser{
+    position: relative;
+}
 .profileimg {
     position: absolute;
+    top: 0;
+    left: 0px;
     width: 40px;
     height: 40px;
     border-radius: 50% 50%;
     background-image: url('../images/profile.png');
     background-size: 40px;
 }
-
-.anwsertxt {
+.anwtxtwrap {
     margin-left: 50px;
 }
-
 .name {
     display: block;
     font-size: 12px;
-    margin-top: 5px;
+    
 }
-
-.txtcontainer {
+.anwtext{
+    font-size: 12px;
+}
+.awschatbubble { 
     margin-top: 5px;
-    padding: 5px 10px 5px 10px;
+    padding: 7px 10px 7px 10px;
     display: inline-block;
     background-color: #ffffff;
     border-radius: 5px 5px 5px 5px;
 }
-
-.anwtext {
-    font-size: 15px;
+.reschatbubble {
+    padding: 7px 10px 7px 10px;
+    display: inline-block;
+    background-color: #ffeb00;
+    border-radius: 5px 5px 5px 5px;
 }
 
-.requestrtxt {
-    float: right;
-    margin-right: 10px;
-    margin-top: 10px;
-}
-
-.anwtime {
+.txttime {
     vertical-align: bottom;
     font-size: 5px;
     color: #617583;
 }
-
-.requestxtcontainer {
-    margin-top: 5px;
-    padding: 5px 10px 5px 10px;
-    display: inline-block;
-    background-color: #ffeb00;
-    border-radius: 5px;
+.restxt{
+    margin-top: 10px;
 }
 
+/* input area */
 .inputtxt {
     position: absolute;
     bottom: 0px;
-    
     height: 37px;
     width: 266px;
     background-color: #eeeeee;
@@ -304,7 +320,6 @@ table {
     display: inline-block;
     
 }
-
 .inputtxt input {
     width: 220px;
     height: 30px;

@@ -237,18 +237,24 @@ table {
 }
 .right{
     float: right;
+   
+}
+.block{
+    display: block;
+    text-align: right;
+    margin-top: 10px;
 }
 /* chat area */
 .chat-messages {
     height: 385px;
     width: 266px;
     position: absolute;
-    background-color: darkorchid;
+   overflow: scroll;
     
 }
 .chat-messages-list{
     padding: 10px 10px 10px 10px;  
-    background-color: aqua;
+
 }
 .anwser{
     position: relative;
@@ -272,6 +278,7 @@ table {
     
 }
 .anwtext{
+   
     font-size: 12px;
 }
 .awschatbubble { 

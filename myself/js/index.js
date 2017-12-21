@@ -20,24 +20,20 @@
 // } else {
 //     timeset = '오후' + aftertime;
 // }
-const moment = require("moment")
-moment.locale('ko');
-const nowtime = moment().format('LT'); 
+// const moment = require("moment")
+// moment.locale('ko');
+// const nowtime = moment().format('LT');
 
-const chatarea = document.querySelector('.chat-messages-list');
-
-function adddiv() {
-    let makediv = document.createElement('div');
-    makediv.id = 'wrap';
-    chatarea.appendChild(makediv);
+function myFunction() {
+    let chatarea = document.querySelector('.chat-messages-list');
+    var node = document.createElement("div");
+    node.classList.add('block');
+    node.innerHTML = `<span class="txttime">1111</span> 
+    <span class="anwtext reschatbubble">1111</span>`;
+    chatarea.appendChild(node);
+    document.querySelector('.inputform').reset();
+   
 }
 
 
 
-function getTxt() {
-    console.log('make a div');
-    let inputrequest = document.querySelector('#inputres').value;
-    let text = `<span class="txttime">${nowtime}</span>
-             <span id="request" class="anwtext reschatbubble">${inputrequest}</span>              `
-    document.querySelector('.wrap').innerHTML = text;
-}

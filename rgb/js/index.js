@@ -19,10 +19,10 @@ function nextStage() {
 
 }
 
-function init(){
+function init() {
   stage = 0;
   problem = [randomColor(), randomColor(), randomColor()];
-  correctAnswer = Math.floor(Math.random()*3);
+  correctAnswer = Math.floor(Math.random() * 3);
 
 }
 
@@ -31,23 +31,62 @@ function draw() {
     el.style.backgroundColor = problem[index];
   })
   document.querySelector('.rgb-text').textContent = problem[correctAnswer];
-  document.querySelector('.score').textContent = stage;
+  document.querySelector('.score').textContent = `SCORE: ${stage}`;
+}
+
+
+
+function correct() {
+  nextStage();
+  draw();
+  let correct = document.querySelector('.correct')
+
+  correct.classList.add('show')
+  document.querySelector('.box').classList.add('show')
+
+  let mobutton = correct.querySelector('.modal-button')
+  mobutton.addEventListener('click', e => {
+
+    correct.classList.remove('show');
+    document.querySelectorAll('.box').forEach(el => {
+      el.classList.remove('show')
+    });
+
+  });
+}
+
+function wrong() {
+  init();
+  draw();
+  let wrong = document.querySelector('.wrong')
+  wrong.classList.add('show')
+  document.querySelector('.modal-score').textContent = `SCORE: ${stage}`;
+  document.querySelector('.box').classList.add('show')
+  let mobutton = wrong.querySelector('.modal-button')
+  mobutton.addEventListener('click', a => {
+    wrong.classList.remove('show');
+
+    document.querySelectorAll('.box').forEach(el => {
+      el.classList.remove('show')
+    });
+
+  });
 }
 
 document.querySelectorAll('.box').forEach((el, index) => {
   el.addEventListener('click', e => {
     if (index === correctAnswer) {
-      nextStage();
-      draw();
+      correct();
+      // nextStage();
+      // draw();
     } else {
-      init();
-      draw();
+      wrong();
+      // init();
+      // draw();
     }
   });
 })
 
+
 init()
-
 draw();
-
-

@@ -7,11 +7,7 @@ body {
   color: #ffffff;
 }
 
-.box {
-  height: 50px;
-  width: 50px;
-  border: 1px solid black;
-}
+
 
 .wrap {
   display: flex;
@@ -34,6 +30,41 @@ body {
 }
 
 .bottom {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
   background-color: #232323;
+}
+
+.score {
+  text-align: center;
+}
+
+.game-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.rgb-text {
+  font-size: 26px;
+  margin-bottom: 50px;
+}
+
+.boxes {
+  display: flex;
+}
+
+.box {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.box:last-child {
+  margin-right: 0;
 }

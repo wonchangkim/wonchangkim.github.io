@@ -1,8 +1,39 @@
-body{
-
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #ffffff;
 }
-.box{
+
+.box {
   height: 50px;
-  width:  50px;
+  width: 50px;
   border: 1px solid black;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.top {
+  background-color: #4983b1;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+}
+
+.rgb {
+  font-size: 52px;
+}
+
+.font17 {
+  font-size: 17px;
+}
+
+.bottom {
+  flex-grow: 1;
+  background-color: #232323;
 }

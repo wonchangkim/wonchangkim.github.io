@@ -21,18 +21,18 @@
 //     timeset = '오후' + aftertime;
 // }
 // const moment = require("moment")
-// moment.locale('ko');
-// const nowtime = moment().format('LT');
+moment.locale('ko');
+const nowtime = moment().format('LT');
+console.log(nowtime);
 
 function myFunction() {
     let chatarea = document.querySelector('.chat-messages-list');
     var node = document.createElement("div");
     node.classList.add('block');
-    node.innerHTML = `<span class="txttime">1111</span> 
+    node.innerHTML = `<span class="txttime">${nowtime}</span> 
     <span class="anwtext reschatbubble">1111</span>`;
     chatarea.appendChild(node);
     document.querySelector('.inputform').reset();
-   
 }
 
 

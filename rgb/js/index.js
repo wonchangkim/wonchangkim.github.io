@@ -56,8 +56,7 @@ function correct() {
 }
 
 function wrong() {
-  init();
-  draw();
+
   let wrong = document.querySelector('.wrong')
   wrong.classList.add('show')
   document.querySelector('.modal-score').textContent = `SCORE: ${stage}`;
@@ -71,6 +70,8 @@ function wrong() {
     });
 
   });
+  init();
+  draw();
 }
 
 document.querySelectorAll('.box').forEach((el, index) => {

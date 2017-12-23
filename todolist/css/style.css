@@ -124,7 +124,7 @@ body {
   z-index: 99;
 }
 .todolist{
-  margin-top: 150px;
+  margin-top: 140px;
 }
 #todo-input {
   width: 70%;
@@ -140,10 +140,13 @@ body {
   float: left;
   width: 30%;
   height: 40px;
-  background: #d9d9d9;
-  color: #555;
+  background: #ffcdd2;
+  color:#888888;
+
   font-size: 16px;
   cursor: pointer;
+  border: 0;
+
 }
 .wrap {
   padding: 5px 10px 5px 10px;
@@ -176,9 +179,7 @@ body {
   background-color: #888;
   color: #EEEEEE;
 }
-.todolist{
 
-}
 .textdeco{
   text-decoration: line-through;
 }

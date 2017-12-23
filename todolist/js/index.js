@@ -29,7 +29,7 @@ function add(){
 
    const close = document.createElement('div')
    itemEl.appendChild(close)
-   close.textContent = 'x';
+  close.textContent = String.fromCodePoint(0xD800,0xDD02) ;
 
    close.addEventListener('click', e => {
    listEl.removeChild(itemEl);

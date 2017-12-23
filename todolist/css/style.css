@@ -117,8 +117,15 @@ body {
   color: white;
   text-align: center;
   height: 140px;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  z-index: 99;
 }
-
+.todolist{
+  margin-top: 150px;
+}
 #todo-input {
   width: 70%;
   height: 40px;
@@ -168,6 +175,9 @@ body {
 #todo-list .complete {
   background-color: #888;
   color: #EEEEEE;
+}
+.todolist{
+
 }
 .textdeco{
   text-decoration: line-through;

@@ -38,22 +38,24 @@ function add(){
       wrapEl.classList.add('complete');
       itemEl.classList.add('textdeco');
     }
+
   });
+
   const time = document.createElement('span')
   wrapEl.appendChild(time)
   time.classList.add('padding')
   time.textContent = nowtime;
-
 
   const close = document.createElement('div')
   close.classList.add('close');
   wrapEl.appendChild(close)
   close.textContent = String.fromCodePoint(0xD800,0xDD02) ;
 
-
-   close.addEventListener('click', e => {
-   listEl.removeChild(wrapEl);
+  close.addEventListener('click', e => {
+  listEl.removeChild(wrapEl);
   });
+  //scroll 마지막 div로 이동
+  listEl.lastChild.scrollIntoView();
 }
 
 

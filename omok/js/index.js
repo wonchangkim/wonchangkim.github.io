@@ -3,70 +3,97 @@ moment.locale('ko');
 const nowtime = moment().format('LLL');
 
 let turn = 1;
-let whitearry =[];
-let balckarry =[];
+
+let wrows = new Array();
+let brows = new Array();
+let wcount = 1;
+let bcount = 1;
 
 document.addEventListener('DOMContentLoaded', () => {
-  
     document.querySelectorAll('.col').forEach(el => {
-        //승리판단
-        
-        el.addEventListener('click', e => {
-            console.log(`힌돌배열 :${whitearry}`);
-            console.log(`흑돌배열 :${balckarry}`);
-            let wcount = 0;
-            let bcount = 0;
-            for(let a of whitearry){
-                if(a === a){
-                    wcount ++;
-                }
-            }
-            console.log(`흰돌같은수: ${wcount}`);
 
-            for (let a of balckarry) {
-                if (a === a) {
-                    bcount++;
-                }
-            }
-            console.log(`흑돌같은수: ${bcount}`);
-            
-            if(wcount === 5 || bcount === 5){
-                alert("게임이 끝났습니다.");
-            }
+            let r = el.closest('.row').classList[0].slice(4, 7);
+            //각각의 배열
+            wrows[r] = new Array();
+            brows[r] = new Array();
 
-            if (turn % 2 !== 0 ) {
-                
-                if (el.classList.contains('white') || el.classList.contains('black')) {
-                    alert("이미바둑알이있습니다.");
+            el.addEventListener('click', e => {
+
+                    if (turn % 2 !== 0) {
+                        if (el.classList.contains('white') || el.classList.contains('black')) {
+                            alert("이미바둑알이있습니다.");
+                        } else {
+                            el.classList.add('white');
+                            console.log(`흰돌카운트: ${wcount}`);
+                            wrows[r].push(Number(el.classList[0].slice(4, 7)));
+                            wrows[r].sort(function (a, b) {
+                                return a - b;
+                            });
+                            // console.log(wrows);
+                            wcount += 1;
+
+                        };
+                        turn++;
+                    } else {
+                        if (el.classList.contains('white') || el.classList.contains('black')) {
+                            alert("이미바둑알이있습니다.");
+                        } else {
+                            el.classList.add('black');
+                            bcount += 1;
+                            console.log(`흑돌카운트: ${bcount}`);
+                            brows[r].push(Number(el.classList[0].slice(4, 7)));
+                            brows[r].sort(function (a, b) {
+                                return a - b;
+                            });
+                            // console.log(brows);
+                        };
+                        turn++;
+
+                    };
+                    //승리판단
+                    function jugde(str) {
+                        return str
+                    }
+                    let a = 1;
+                    let b = new Array();
+                    let c = 0;
+                    let d = new Array();
+                    for (let i = 1; i < wrows.length; i++) {
+                        //수정해야될부분 세로 확인
+                        for (let j = 0; j < wrows[i].length; j++) {
+                            let key = wrows[i][j]
+                            console.log(key);
+                            if (!d[key]) {
+                                d[key] = 1
+                            } else {
+                                d[key] = d[key] + 1;
+                            }
+                            if(d[5]===5){
+                                alert("게임끝");
+                            }
+                            console.log(d);
                     
-                }else{
-                    console.log('흰돌차례');
-                    el.classList.add('black');
-                    let arr = el.classList.item(0);
-                    whitearry += arr[4];
-                   
-                    console.log(Array.from(el.classList));
-                    console.log(Array.from(el.closest('.row').classList));
-                };
-                turn++;
-            }else{
-                
-                if (el.classList.contains('white') || el.classList.contains('black')) {
-                    alert("이미바둑알이있습니다.");
-                }else{
-                    console.log('검을돌차례');
-                    el.classList.add('white');
-                    let arr = el.classList.item(0);
-                    balckarry += arr[4];
-                 
-                    console.log(Array.from(el.classList));
-                    console.log(Array.from(el.closest('.row').classList));
-                };
-                turn++;
-            };
-        });
+                       
+
+                        if (wrows[i][j + 1] - wrows[i][j] === 1) {
+                            a++
+                            if (a === 5) {
+                                alert("게임끝");
+                            }
+                        }
+                    }
+                }
+
+            
+
+            });
+
     });
+
 });
 
-//승리판단
 
+
+
+
+//승리판단

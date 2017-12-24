@@ -192,10 +192,10 @@ body {
 }
 .closebox{
   background-color: #CCBA14;
-  width: 100px;
+  width: 200px;
   height: 54px;
   position: absolute;
-  right: -100px;
+  right: -200px;
   top: 0;
   padding-top: 15px;
   padding-left: 10px;

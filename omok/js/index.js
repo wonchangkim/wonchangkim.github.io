@@ -2,6 +2,9 @@
 moment.locale('ko');
 const nowtime = moment().format('LLL');
 
+
+
+
 let turn = 1;
 
 let wrows = new Array();
@@ -9,91 +12,115 @@ let brows = new Array();
 let wcount = 1;
 let bcount = 1;
 
+let rowwcount = 1;
+let colcount = 1;
+let diagonal = 1;
+let diagonal2 = 1;
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.col').forEach(el => {
 
-            let r = el.closest('.row').classList[0].slice(4, 7);
-            //각각의 배열
-            wrows[r] = new Array();
-            brows[r] = new Array();
+        let r = el.closest('.row').classList[0].slice(4, 7);
+        //각각의 배열
+        wrows[r] = new Array();
+        brows[r] = new Array();
 
-            el.addEventListener('click', e => {
+        el.addEventListener('click', e => {
 
-                    if (turn % 2 !== 0) {
-                        if (el.classList.contains('white') || el.classList.contains('black')) {
-                            alert("이미바둑알이있습니다.");
-                        } else {
-                            el.classList.add('white');
-                            console.log(`흰돌카운트: ${wcount}`);
-                            wrows[r].push(Number(el.classList[0].slice(4, 7)));
-                            wrows[r].sort(function (a, b) {
-                                return a - b;
-                            });
-                            // console.log(wrows);
-                            wcount += 1;
+            if (turn % 2 !== 0) {
+                if (el.classList.contains('white') || el.classList.contains('black')) {
+                    alert("이미바둑알이있습니다.");
+                } else {
+                    el.classList.add('white');
+                    document.querySelector('.wcount').innerHTML = `흰돌 : ${wcount}`;
+                    // console.log(`흰돌카운트: ${wcount}`);
+                  
+                    wrows[r].push(Number(el.classList[0].slice(4, 7)));
+                    wrows[r].sort(function (a, b) {
+                        return b - a;
+                    });
 
-                        };
-                        turn++;
-                    } else {
-                        if (el.classList.contains('white') || el.classList.contains('black')) {
-                            alert("이미바둑알이있습니다.");
-                        } else {
-                            el.classList.add('black');
-                            bcount += 1;
-                            console.log(`흑돌카운트: ${bcount}`);
-                            brows[r].push(Number(el.classList[0].slice(4, 7)));
-                            brows[r].sort(function (a, b) {
-                                return a - b;
-                            });
-                            // console.log(brows);
-                        };
-                        turn++;
-
-                    };
-                    //승리판단
-                    function jugde(str) {
-                        return str
-                    }
-                    let a = 1;
-                    let b = new Array();
-                    let c = 0;
-                    let d = new Array();
                     for (let i = 1; i < wrows.length; i++) {
-                        //수정해야될부분 세로 확인
                         for (let j = 0; j < wrows[i].length; j++) {
-                            let key = wrows[i][j]
-                            console.log(key);
-                            if (!d[key]) {
-                                d[key] = 1
-                            } else {
-                                d[key] = d[key] + 1;
-                            }
-                            if(d[5]===5){
-                                alert("게임끝");
-                            }
-                            console.log(d);
-                    
-                       
+                            //대각선1
+                            if (wrows[i][j] - 1 === wrows[i + 1][j]) {
+                                diagonal++
+                                console.log(`오른쪽연속값 : ${diagonal}`);
+                                if (diagonal === 5) {
+                                    alert("게임끝");
+                                }
 
-                        if (wrows[i][j + 1] - wrows[i][j] === 1) {
-                            a++
-                            if (a === 5) {
-                                alert("게임끝");
+                            } else {
+                                diagonal = 1;
+                                console.log(`오른쪽초기값: ${diagonal}`);
+                            }
+                            //대각선2
+                            if (wrows[i][j]+1 === wrows[i + 1][j]) {
+                                diagonal2++
+                                console.log(`왼쪽대각선연속값 : ${diagonal2}`);
+                                if (diagonal2 === 5) {
+                                    alert("게임끝");
+                                }
+
+                            } else {
+                                diagonal2 = 1;
+                                console.log(`왼쪽대각선초기값: ${diagonal2}`);
+                            }
+                            
+                            //세로
+                            if (wrows[i][j] === wrows[i + 1][j]) {
+                                colcount++
+                                console.log(`세로연속값 : ${colcount}`);
+                                if (colcount === 5) {
+                                    alert("게임끝");
+                                }
+
+                            } else {
+                                colcount = 1;
+                                console.log(`세로초기값: ${colcount}`);
+                            }
+                            //가로 
+                            if (wrows[i][j] - wrows[i][j + 1] === 1) {
+                                rowwcount++
+                                console.log(`가로연속값 : ${rowwcount}`);
+                                if (rowwcount === 5) {
+                                    alert("게임끝");
+                                }
+                            } else {
+                                rowwcount = 1;
+                                console.log(`가로초기값: ${rowwcount}`);
                             }
                         }
                     }
-                }
+                    console.log(wrows);
+                    wcount += 1;
 
-            
 
-            });
+                };
+                turn++;
+            } else {
+                if (el.classList.contains('white') || el.classList.contains('black')) {
+                    alert("이미바둑알이있습니다.");
+                } else {
+                    el.classList.add('black');
+                    document.querySelector('.bcount').innerHTML = `흑돌 : ${bcount}`;
+                    bcount += 1;
+                    
+                    // console.log(`흑돌카운트: ${bcount}`);
+                    brows[r].push(Number(el.classList[0].slice(4, 7)));
+                    brows[r].sort(function (a, b) {
+                        return a - b;
+                    });
+                    // console.log(brows);
+                };
+                turn++;
+
+            };
+
+        });
 
     });
 
 });
-
-
-
-
-
-//승리판단

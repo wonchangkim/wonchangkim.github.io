@@ -17,7 +17,15 @@ let colcount = 1;
 let diagonal = 1;
 let diagonal2 = 1;
 
-
+function timer(){
+    let timeleft = 50;
+    let downloadTimer = setInterval(function () {
+        timeleft--;
+        document.querySelector(".timer").textContent = timeleft;
+        if (timeleft <= 0)
+            clearInterval(downloadTimer);
+    }, 1000);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.col').forEach(el => {
@@ -35,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     el.classList.add('white');
                     document.querySelector('.wcount').innerHTML = `흰돌 : ${wcount}`;
+                    timer();
                     // console.log(`흰돌카운트: ${wcount}`);
                   
                     wrows[r].push(Number(el.classList[0].slice(4, 7)));

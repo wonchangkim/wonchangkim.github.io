@@ -7,23 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>OMOK</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
 
 </head>
 
 <body>
     <div class="container">
-        <div class="time">
-            오목
+        <div class="title">
+            5초 오목
         </div>
         <div class="wrap">
             <div class="countwrap clearfix">
-                <div class="wcount">
-                    흰돌 
-                </div>
-                <div class="bcount">
-                    흑돌 
-                </div>
-                <div class="timer"></div>
+            <div class="noise">
+                    <div class="wcount">
+                    </div>
+                    <div class="bcount">
+                    </div>
+</div>
+
+                <canvas id="canvas" class="timer" width="700" height="200"></canvas>
+
             </div>
             <div class="board">
                 <div class="row-1 row">
@@ -735,7 +738,7 @@
         </div>
     </div>
 
-    <script src="./js/moment.js"></script>
+
     <script src="./js/index.js"></script>
 </body>
 

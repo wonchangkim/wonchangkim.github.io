@@ -1,12 +1,18 @@
 @charset "utf-8";
-@import url("./fonts.css");
+
+@import url("/css/fontello.css");
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-    ul ,button,li {
+ul,
+button,
+li,
+p,
+h3 {
     margin: 0;
     padding: 0;
 }
@@ -61,7 +67,6 @@ a:hover {
     height: 80px;
     padding: 20px 20px 20px 50px;
     line-height: 40px;
-    margin-bottom: 5px;
 }
 
 .home {
@@ -76,7 +81,8 @@ a:hover {
     display: inline-block;
     margin-left: 20px;
 }
-.menu-btn{
+
+.menu-btn {
     cursor: pointer;
     width: 80px;
     height: 30px;
@@ -85,26 +91,144 @@ a:hover {
     background-color: transparent;
     border: 1px solid #FEE38A;
     color: #FEE38A;
-    
-}
-.menu-btn:hover {
-    transition: all 0.2s ease-in;
-    background-color : #FEE38A;
-    border: 1px solid #FEE38A;
-    color:#553F7A;
 }
 
+.menu-btn:hover {
+    transition: all 0.2s ease-in;
+    background-color: #FEE38A;
+    border: 1px solid #FEE38A;
+    color: #553F7A;
+}
+
+.collapse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #7C54BF;
+    height: 5px;
+    transition: all 0.2s ease-in;
+}
+
+.collapseshow {
+    height: 70px;
+    transition: all 0.2s ease-in;
+}
+
+.collapsecontent {
+    opacity: 0;
+    visibility: none;
+}
+
+.collapsecontentshow {
+    transition: all 0.7s ease-in;
+    opacity: 1;
+}
+
+.collapsecontent {
+    height: 50px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.collapseitem {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    width: 90%;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.collapseitem a {
+    font-size: 15px;
+}
+
+.container {
+    position: relative;
+}
+
+.modal {
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 230px;
+    border-radius: 10px;
+    padding: 15px 0px 15px 0px;
+    background-color: white;
+    z-index: 99;
+    opacity: 0;
+    transition: all 0.2s ease-in;
+}
+
+.modalcolsebtn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-size: 20px;
+    width: 90px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgba(134,142,149,0.6);
+    color: white;
+    border: 0;
+}
+.modalcolsebtn:hover{
+    background-color:rgba(134,142,149, 1);
+}
+.modalshow {
+    top: 80px;
+    opacity: 1;
+    transition: all 0.2s ease-in;
+}
+
+.modalwarp {
+    z-index: 88;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.modalwarpshow {
+    display: block;
+}
+
+.modal h3 {
+    padding-left: 15px;
+    line-height: 60px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+.modal p {
+    padding-left: 15px;
+    line-height: 80px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2)
+}
+.modal span{
+    color: rgba(134, 142, 149, 0.6);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+
+}
+.icon-cancel:hover{
+    color:rgba(134, 142, 149, 1);
+}
 .carousel {
-    
     position: relative;
     width: 700px;
     height: 400px;
     background-color: darkcyan;
     margin: 0 auto;
 }
-.show{
-    transition: all 1s ease-in;
-}
+
 .corouselinner {
     width: 700px;
     height: 400px;
@@ -112,20 +236,23 @@ a:hover {
 
 .img {
     position: absolute;
-  
     width: 700px;
     height: 400px;
     display: block;
 }
-.i1{
+
+.i1 {
     background-color: darkgoldenrod;
 }
-.i2{
+
+.i2 {
     background-color: darkgray;
 }
-.i3{
-    background-color:firebrick;
+
+.i3 {
+    background-color: firebrick;
 }
+
 .carousel-prev,
 .carousel-next {
     position: absolute;
@@ -136,6 +263,7 @@ a:hover {
 .carousel-prev {
     left: 30px;
 }
-.carousel-next{
+
+.carousel-next {
     right: 30px;
 }

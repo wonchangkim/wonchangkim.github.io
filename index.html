@@ -11,6 +11,8 @@
 
 <body>
     <div class="container">
+<div class="modalwarp" onclick="modalclose()">
+        </div>
         <div class="navbar">
             <a href="index.html" class="home">Home</a>
             <ul class="navbarul">
@@ -21,22 +23,65 @@
                     <a href="https://developer.mozilla.org/ko/">MDN</a>
                 </li>
                 <li>
-                    <button class="menu-btn" type="button">과제보기</button>
+                    <button class="carousel-btn menu-btn" type="button" onclick="carouselbtn()">과제보기</button>
                 </li>
                 <li>
-                    <button class="menu-btn" type="button">Modal</button>
+                    <button class="modal-btn menu-btn" type="button" onclick="modalbtn()">Modal</button>
                 </li>
             </ul>
         </div>
 
+        <div class="modal">
+            <h3>Modal test</h3>
+            <p>Woohoo, you're reading this text in a modal!</p>
+            <button class="modalcolsebtn" type="button" onclick="modalclose()">Close</button>
+<span class="icon-cancel" onclick="modalclose()"></span>
+
+        </div>
+
+        <div class="collapse">
+            <div class="collapsecontent">
+                <ul class="collapseitem">
+                    <li>
+                        <a href="./responsive/">반응형과제</a>
+                    </li>
+                    <li>
+                        <a href="./20171127/">아티클</a>
+                    </li>
+                    <li>
+                        <a href="./displaygrid/">displaygrid반응형</a>
+                    </li>
+                    <li>
+                        <a href="./gird/">gird</a>
+                    </li>
+                    <li>
+                        <a href="./calculator/">계산기</a>
+                    </li>
+                    <li>
+                        <a href="./myself/">자기소개</a>
+                    </li>
+                    <li>
+                        <a href="./rgb/">RGB</a>
+                    </li>
+                    <li>
+                        <a href="./todolist/">todolist</a>
+                    </li>
+                    <li>
+                        <a href="./omok/">오목</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
         <div class="carousel">
             <div class="corouselinner">
                 <img class="img i1 " src="" alt="">
                 <img class="img i2" src="" alt="">
                 <img class="img i3" src="" alt="">
             </div>
-            <a href="" class="carousel-prev"><</a>
-            <a href="" class="carousel-next">></a>
+            <a href="" class="carousel-prev">
+                <</a>
+                    <a href="" class="carousel-next">></a>
         </div>
 
         <div class="con">

@@ -1,10 +1,14 @@
 
+//타이머
 let progressValue = document.querySelector('.progress__value');
 let progressValue2 = document.querySelector('.progress__value2');
+let limitValue = document.querySelector('.limit__value');
+let limitValue2 = document.querySelector('.limit__value2');
 
 let RADIUS = 54;
+let r = 30;
 let CIRCUMFERENCE = 2 * Math.PI * RADIUS;
-
+let cr = 2 * Math.PI * r;
 
 // 타이머
 let whitetimer = 5;
@@ -19,8 +23,10 @@ function whitePause() {
         whiteinterval = setInterval(function () {
 
             whitetimer--;
-            progressValue.style.strokeDashoffset = CIRCUMFERENCE * (1 - (whitetimer *2 / 10));
+            progressValue.style.strokeDashoffset = CIRCUMFERENCE * (1 - (whitetimer * 2 / 10));
             progressValue.style.strokeDasharray = CIRCUMFERENCE;
+            limitValue.style.strokeDashoffset = cr * (1 - (whitetime * 3 / 9));
+            limitValue.style.strokeDasharray = cr;
             document.querySelector('.whitecounttxt').innerHTML = whitetimer;
             document.querySelector('.whitelimittxt').innerHTML = whitetime;
             if (whitetimer === 0) {
@@ -42,6 +48,8 @@ function blakcPause() {
             blacktimer--;
             progressValue2.style.strokeDashoffset = CIRCUMFERENCE * (1 - (blacktimer * 2 / 10));
             progressValue2.style.strokeDasharray = CIRCUMFERENCE;
+            limitValue2.style.strokeDashoffset = cr* (1 - (blacktime * 3 / 9));
+            limitValue2.style.strokeDasharray = cr;
             document.querySelector('.blackcounttxt').innerHTML = blacktimer;
             document.querySelector('.blacklimittxt').innerHTML = blacktime;
             if (blacktimer === 0) {
@@ -66,8 +74,8 @@ function blacktimeReset() {
     clearInterval(blackinterval);
     blackinterval = 0;
 }
-
-
+///타이머끝
+//게임세팅
 let turn = 1;
 
 let wrows = new Array();
@@ -99,11 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     el.classList.add('white');
                     blakcPause();
                     whitetimeReset();
-
-                  
-
                     // console.log(`흰돌카운트: ${wcount}`);
-
                     wrows[r].push(Number(el.classList[0].slice(4, 7)));
                     wrows[r].sort(function (a, b) {
                         return b - a;
@@ -118,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 if (diagonal === 5) {
                                     alert("게임끝");
                                 }
-
                             } else {
                                 diagonal = 1;
                                 console.log(`오른쪽초기값: ${diagonal}`);
@@ -130,12 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 if (diagonal2 === 5) {
                                     alert("게임끝");
                                 }
-
                             } else {
                                 diagonal2 = 1;
                                 console.log(`왼쪽대각선초기값: ${diagonal2}`);
                             }
-
                             //세로
                             if (wrows[i][j] === wrows[i + 1][j]) {
                                 colcount++
@@ -143,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 if (colcount === 5) {
                                     alert("게임끝");
                                 }
-
                             } else {
                                 colcount = 1;
                                 console.log(`세로초기값: ${colcount}`);
@@ -163,8 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     console.log(wrows);
                     wcount += 1;
-
-
                 };
                 turn++;
             } else {
@@ -172,11 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert("이미바둑알이있습니다.");
                 } else {
                     el.classList.add('black');
-                    // document.querySelector('.bcount').innerHTML = `${bcount}`;
                     whitePause();
                     blacktimeReset();
                     bcount += 1;
-
                     // console.log(`흑돌카운트: ${bcount}`);
                     brows[r].push(Number(el.classList[0].slice(4, 7)));
                     brows[r].sort(function (a, b) {

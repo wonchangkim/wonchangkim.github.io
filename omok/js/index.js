@@ -1,3 +1,15 @@
+var countdownNumberEl = document.getElementById('countdown-number');
+var countdown = 10;
+
+countdownNumberEl.textContent = countdown;
+
+setInterval(function () {
+    countdown = --countdown <= 0 ? 10 : countdown;
+
+    countdownNumberEl.textContent = countdown;
+}, 1000);
+
+
 // 타이머
 let whitetimer = 5;
 let whiteinterval = 0;
@@ -22,6 +34,7 @@ function whitePause() {
       
     }
 }
+
 function blakcPause() {
     if (blackinterval === 0) {
         blackinterval = setInterval(function () {
@@ -48,68 +61,68 @@ function blacktimeReset() {
 }
 
 
-let canvas = document.querySelector('#canvas');
-let ctx = canvas.getContext('2d');
-let tt = canvas.getContext('2d');
-let c = canvas.getContext('2d');
+// let canvas = document.querySelector('#canvas');
+// let ctx = canvas.getContext('2d');
+// let tt = canvas.getContext('2d');
+// let c = canvas.getContext('2d');
 
-ctx.strokeStyle = '#fffff';
-ctx.lineWidth = 10;
-ctx.lineCap = 'round';
+// ctx.strokeStyle = '#fffff';
+// ctx.lineWidth = 10;
+// ctx.lineCap = 'round';
 
 
-function degToRad(degree) {
-    let factor = Math.PI / 180;
-    return degree * factor;
-}
+// function degToRad(degree) {
+//     let factor = Math.PI / 180;
+//     return degree * factor;
+// }
 
-function whiteTime() {
-    //background
-    ctx.fillStyle = '#F37A78';
-    ctx.fillRect(100, 0, 200, 200);
+// function whiteTime() {
+//     //background
+//     ctx.fillStyle = '#F37A78';
+//     ctx.fillRect(100, 0, 200, 200);
 
-    //제한타임
-    tt.beginPath();
-    tt.arc(200, 100, 90, degToRad(0), degToRad((whitetime * 120) - 90));
-    tt.stroke();
+//     //제한타임
+//     tt.beginPath();
+//     tt.arc(200, 100, 90, degToRad(0), degToRad((whitetime * 120) - 90));
+//     tt.stroke();
 
-    //초
-    ctx.beginPath();
-    ctx.arc(200, 100, 75, degToRad(270), degToRad((whitetimer * 36) - 90));
-    ctx.stroke();
+//     //초
+//     ctx.beginPath();
+//     ctx.arc(200, 100, 75, degToRad(270), degToRad((whitetimer * 36) - 90));
+//     ctx.stroke();
 
     
-    //time
-    ctx.font = '80px Nunito Sans';
-    ctx.fillStyle = '#ffffff';
-    ctx.fillText(whitetimer, 170, 130);
+//     //time
+//     ctx.font = '80px Nunito Sans';
+//     ctx.fillStyle = '#ffffff';
+//     ctx.fillText(whitetimer, 170, 130);
 
-}
-function blackTime() {
-    //background
-    ctx.fillStyle = '#F37A78';
-    ctx.fillRect(400, 0, 200, 200);
+// }
+// function blackTime() {
+//     //background
+//     ctx.fillStyle = '#F37A78';
+//     ctx.fillRect(400, 0, 200, 200);
 
-    //제한타임
-    tt.beginPath();
-    tt.arc(500, 100, 90, degToRad(0), degToRad((blacktime * 120) - 90));
-    tt.stroke();
+//     //제한타임
+//     tt.beginPath();
+//     tt.arc(500, 100, 90, degToRad(0), degToRad((blacktime * 120) - 90));
+//     tt.stroke();
 
-    //초
-    ctx.beginPath();
-    ctx.arc(500, 100, 75, degToRad(270), degToRad((blacktimer * 36) - 90));
-    ctx.stroke();
+//     //초
+//     ctx.beginPath();
+//     ctx.arc(500, 100, 75, degToRad(270), degToRad((blacktimer * 36) - 90));
+//     ctx.stroke();
 
-    //time
-    ctx.font = '80px Nunito Sans';
-    ctx.fillStyle = '#ffffff';
-    ctx.fillText(blacktimer, 470, 130);
+//     //time
+//     ctx.font = '80px Nunito Sans';
+//     ctx.fillStyle = '#ffffff';
+//     ctx.fillText(blacktimer, 470, 130);
 
-}
+// }
 
 
-setInterval(blackTime, 1000);
-setInterval(whiteTime, 1000);
+// setInterval(blackTime, 1000);
+// setInterval(whiteTime, 1000);
 
 
 
@@ -145,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     blakcPause();
                     whitetimeReset();
                     
-                    document.querySelector('.wcount').innerHTML = `${wcount}`;
+                    document.querySelector('#rightinner').innerHTML = 1111111;
 
                     // console.log(`흰돌카운트: ${wcount}`);
 

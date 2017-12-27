@@ -5,13 +5,16 @@
 *::after {
     box-sizing: border-box;
 }
-ul{
+
+    ul ,button,li {
     margin: 0;
     padding: 0;
 }
-li{
+
+li {
     list-style: none;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -52,22 +55,87 @@ a:visited {
 a:hover {
     background-color: lightseagreen;
 }
-.navbar{
+
+.navbar {
     background-color: #553F7A;
     height: 80px;
     padding: 20px 20px 20px 50px;
     line-height: 40px;
+    margin-bottom: 5px;
+}
 
-}
-.home{
-    float: left;
-   
-}
-.navbarul{
+.home {
     float: left;
 }
-.navbar li{
+
+.navbarul {
+    float: left;
+}
+
+.navbar li {
     display: inline-block;
     margin-left: 20px;
-   
+}
+.menu-btn{
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 12px;
+    background-color: transparent;
+    border: 1px solid #FEE38A;
+    color: #FEE38A;
+    
+}
+.menu-btn:hover {
+    transition: all 0.2s ease-in;
+    background-color : #FEE38A;
+    border: 1px solid #FEE38A;
+    color:#553F7A;
+}
+
+.carousel {
+    
+    position: relative;
+    width: 700px;
+    height: 400px;
+    background-color: darkcyan;
+    margin: 0 auto;
+}
+.show{
+    transition: all 1s ease-in;
+}
+.corouselinner {
+    width: 700px;
+    height: 400px;
+}
+
+.img {
+    position: absolute;
+  
+    width: 700px;
+    height: 400px;
+    display: block;
+}
+.i1{
+    background-color: darkgoldenrod;
+}
+.i2{
+    background-color: darkgray;
+}
+.i3{
+    background-color:firebrick;
+}
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-prev {
+    left: 30px;
+}
+.carousel-next{
+    right: 30px;
 }

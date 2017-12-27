@@ -5,7 +5,13 @@
 *::after {
     box-sizing: border-box;
 }
-
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
 body {
     margin: 0;
     padding: 0;
@@ -45,4 +51,23 @@ a:visited {
 
 a:hover {
     background-color: lightseagreen;
+}
+.navbar{
+    background-color: #553F7A;
+    height: 80px;
+    padding: 20px 20px 20px 50px;
+    line-height: 40px;
+
+}
+.home{
+    float: left;
+   
+}
+.navbarul{
+    float: left;
+}
+.navbar li{
+    display: inline-block;
+    margin-left: 20px;
+   
 }

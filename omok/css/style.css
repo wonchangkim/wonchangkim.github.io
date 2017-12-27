@@ -119,9 +119,9 @@ body {
 
 .title {
     width: 700px;
-    height: 100px;
+    height: 80px;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 10px;
     font-size: 30px;
     font-weight: bold;
     color: antiquewhite;
@@ -238,32 +238,6 @@ body {
     border-right: none;
 }
 
-.wcount,
-.bcount {
-    font-family: 'Nunito Sans';
-    line-height: 40px;
-    text-align: center;
-    font-size: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: inline-block;
-    position: absolute;
-}
-
-.wcount {
-    top: 40px;
-    background-color: aliceblue;
-    color: black;
-}
-
-.bcount {
-    top: 40px;
-    right: 10px;
-    background-color: black;
-    color: white;
-}
-
 .noise {
     border-radius: 50px;
     position: absolute;
@@ -282,56 +256,77 @@ body {
 
 .countwrap {
     position: relative;
-    height: 300px;
+    height: 130px;
+    text-align: center;
 }
 
 
 /* svg */
-  body {
-      height: 100%;
-      width: 100%;
-      background-color: #333;
-  }
 
-  #countdown {
-      position: relative;
-      margin: auto;
-      margin-top: 100px;
-      height: 40px;
-      width: 40px;
-      text-align: center;
-  }
+.whitetimer {
+    display: inline-block;
+}
 
-  #countdown-number {
-      color: white;
-      display: inline-block;
-      line-height: 40px;
-  }
+.blacktimer {
+    display: inline-block;
+}
 
-  svg {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 40px;
-      height: 40px;
-      transform: rotateY(-180deg) rotateZ(-90deg);
-  }
+.progress {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
 
-  svg circle {
-      stroke-dasharray: 113px;
-      stroke-dashoffset: 0px;
-      stroke-linecap: round;
-      stroke-width: 2px;
-      stroke: white;
-      fill: none;
-      animation: countdown 5s linear infinite forwards;
-  }
+.progress__meter,
+.progress__value {
+    fill: none;
+}
 
-  @keyframes countdown {
-      from {
-          stroke-dashoffset: 0px;
-      }
-      to {
-          stroke-dashoffset: 113px;
-      }
-  }
+.progress__value2 {
+    fill: none;
+}
+
+.progress__meter {
+    stroke: #e6e6e6;
+}
+
+.progress__value {
+    stroke: #f77a52;
+    stroke-linecap: round;
+}
+
+.progress__value2 {
+    stroke: #f77a52;
+    stroke-linecap: round;
+}
+
+.whitecounttxt,
+.blackcounttxt {
+    font-size: 30px;
+}
+
+.limit1 {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.limitwrap{
+    display: inline-block;
+}
+.limit {
+    fill: none;
+    stroke: #e6e6e6;
+}
+
+.limit__value {
+    fill: none;
+    stroke: #f77a52;
+    stroke-linecap: round;
+}
+.limit__value2 {
+    fill: none;
+    stroke: #f77a52;
+    stroke-linecap: round;
+}
+.whitelimit,
+.blacklimit {
+    display: inline-block;
+}

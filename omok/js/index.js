@@ -1,3 +1,15 @@
+
+//타이머
+let progressValue = document.querySelector('.progress__value');
+let progressValue2 = document.querySelector('.progress__value2');
+let limitValue = document.querySelector('.limit__value');
+let limitValue2 = document.querySelector('.limit__value2');
+
+let RADIUS = 54;
+let r = 30;
+let CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+let cr = 2 * Math.PI * r;
+
 // 타이머
 let whitetimer = 5;
 let whiteinterval = 0;
@@ -6,115 +18,72 @@ let whitetime = 3;
 let blacktimer = 5;
 let blacktime = 3;
 
+
 function whitePause() {
     if (whiteinterval === 0) {
-        whiteinterval = setInterval(function(){
+        whiteinterval = setInterval(function () {
             whitetimer--;
-            if(whitetimer === 0){
+            progressValue.style.strokeDashoffset = CIRCUMFERENCE * (1 - (whitetimer * 2 / 10));
+            progressValue.style.strokeDasharray = CIRCUMFERENCE;
+            limitValue.style.strokeDashoffset = cr * (1 - (whitetime * 3 / 9));
+            limitValue.style.strokeDasharray = cr;
+            document.querySelector('.whitecounttxt').innerHTML = whitetimer;
+            document.querySelector('.whitelimittxt').innerHTML = whitetime;
+            if (whitetimer === 0) {
                 whitetimer = 5;
                 whitetime--;
+                if(whitetime < 0){
+                    alert("게임끝")
+                }
             }
-        },1000);
-     
+        }, 1000);
+
     } else {
         clearInterval(whiteinterval);
         whiteinterval = 0;
-      
+
     }
 }
+
 function blakcPause() {
     if (blackinterval === 0) {
         blackinterval = setInterval(function () {
             blacktimer--;
+            progressValue2.style.strokeDashoffset = CIRCUMFERENCE * (1 - (blacktimer * 2 / 10));
+            progressValue2.style.strokeDasharray = CIRCUMFERENCE;
+            limitValue2.style.strokeDashoffset = cr* (1 - (blacktime * 3 / 9));
+            limitValue2.style.strokeDasharray = cr;
+            document.querySelector('.blackcounttxt').innerHTML = blacktimer;
+            document.querySelector('.blacklimittxt').innerHTML = blacktime;
             if (blacktimer === 0) {
                 blacktimer = 5;
                 blacktime--;
+                if (blacktime < 0) {
+                    alert("게임끝")
+                }
             }
         }, 1000);
-      
+
     } else {
         clearInterval(blackinterval);
         blackinterval = 0;
-        
+
     }
 }
+
 function whitetimeReset() {
     clearInterval(whiteinterval);
     whiteinterval = 0;
 }
+
 function blacktimeReset() {
     clearInterval(blackinterval);
     blackinterval = 0;
 }
+///타이머끝
 
-
-let canvas = document.querySelector('#canvas');
-let ctx = canvas.getContext('2d');
-let tt = canvas.getContext('2d');
-let c = canvas.getContext('2d');
-
-ctx.strokeStyle = '#fffff';
-ctx.lineWidth = 10;
-ctx.lineCap = 'round';
-
-
-function degToRad(degree) {
-    let factor = Math.PI / 180;
-    return degree * factor;
-}
-
-function whiteTime() {
-    //background
-    ctx.fillStyle = '#F37A78';
-    ctx.fillRect(100, 0, 200, 200);
-
-    //제한타임
-    tt.beginPath();
-    tt.arc(200, 100, 90, degToRad(0), degToRad((whitetime * 120) - 90));
-    tt.stroke();
-
-    //초
-    ctx.beginPath();
-    ctx.arc(200, 100, 75, degToRad(270), degToRad((whitetimer * 36) - 90));
-    ctx.stroke();
-
-    
-    //time
-    ctx.font = '80px Nunito Sans';
-    ctx.fillStyle = '#ffffff';
-    ctx.fillText(whitetimer, 170, 130);
-
-}
-function blackTime() {
-    //background
-    ctx.fillStyle = '#F37A78';
-    ctx.fillRect(400, 0, 200, 200);
-
-    //제한타임
-    tt.beginPath();
-    tt.arc(500, 100, 90, degToRad(0), degToRad((blacktime * 120) - 90));
-    tt.stroke();
-
-    //초
-    ctx.beginPath();
-    ctx.arc(500, 100, 75, degToRad(270), degToRad((blacktimer * 36) - 90));
-    ctx.stroke();
-
-    //time
-    ctx.font = '80px Nunito Sans';
-    ctx.fillStyle = '#ffffff';
-    ctx.fillText(blacktimer, 470, 130);
-
-}
-
-
-setInterval(blackTime, 1000);
-setInterval(whiteTime, 1000);
-
-
-
+//게임세팅
 let turn = 1;
-
 let wrows = new Array();
 let brows = new Array();
 let wcount = 1;
@@ -124,6 +93,11 @@ let rowwcount = 1;
 let colcount = 1;
 let diagonal = 1;
 let diagonal2 = 1;
+
+let rowwcountb = 1;
+let colcountb = 1;
+let diagonalb = 1;
+let diagonal2b = 1;
 
 
 
@@ -144,72 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     el.classList.add('white');
                     blakcPause();
                     whitetimeReset();
-                    
-                    document.querySelector('.wcount').innerHTML = `${wcount}`;
-
                     // console.log(`흰돌카운트: ${wcount}`);
-
                     wrows[r].push(Number(el.classList[0].slice(4, 7)));
                     wrows[r].sort(function (a, b) {
                         return b - a;
                     });
-
-                    for (let i = 1; i < wrows.length; i++) {
-                        for (let j = 0; j < wrows[i].length; j++) {
-                            //대각선1
-                            if (wrows[i][j] - 1 === wrows[i + 1][j]) {
-                                diagonal++
-                                console.log(`오른쪽연속값 : ${diagonal}`);
-                                if (diagonal === 5) {
-                                    alert("게임끝");
-                                }
-
-                            } else {
-                                diagonal = 1;
-                                console.log(`오른쪽초기값: ${diagonal}`);
-                            }
-                            //대각선2
-                            if (wrows[i][j] + 1 === wrows[i + 1][j]) {
-                                diagonal2++
-                                console.log(`왼쪽대각선연속값 : ${diagonal2}`);
-                                if (diagonal2 === 5) {
-                                    alert("게임끝");
-                                }
-
-                            } else {
-                                diagonal2 = 1;
-                                console.log(`왼쪽대각선초기값: ${diagonal2}`);
-                            }
-
-                            //세로
-                            if (wrows[i][j] === wrows[i + 1][j]) {
-                                colcount++
-                                console.log(`세로연속값 : ${colcount}`);
-                                if (colcount === 5) {
-                                    alert("게임끝");
-                                }
-
-                            } else {
-                                colcount = 1;
-                                console.log(`세로초기값: ${colcount}`);
-                            }
-                            //가로 
-                            if (wrows[i][j] - wrows[i][j + 1] === 1) {
-                                rowwcount++
-                                console.log(`가로연속값 : ${rowwcount}`);
-                                if (rowwcount === 5) {
-                                    alert("게임끝");
-                                }
-                            } else {
-                                rowwcount = 1;
-                                console.log(`가로초기값: ${rowwcount}`);
-                            }
-                        }
-                    }
+                    
+                    whitejudge(); //판단
                     console.log(wrows);
                     wcount += 1;
-
-
                 };
                 turn++;
             } else {
@@ -217,17 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert("이미바둑알이있습니다.");
                 } else {
                     el.classList.add('black');
-                    document.querySelector('.bcount').innerHTML = `${bcount}`;
                     whitePause();
                     blacktimeReset();
                     bcount += 1;
-
                     // console.log(`흑돌카운트: ${bcount}`);
                     brows[r].push(Number(el.classList[0].slice(4, 7)));
                     brows[r].sort(function (a, b) {
                         return a - b;
                     });
-                    // console.log(brows);
+                    blackjudge();
+                    console.log(brows);
                 };
                 turn++;
 
@@ -238,3 +154,104 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+function whitejudge(){
+    for (let i = 1; i < wrows.length; i++) {
+        for (let j = 0; j < wrows[i].length; j++) {
+            //대각선1
+            if (wrows[i][j] - 1 === wrows[i + 1][j]) {
+                diagonal++
+                console.log(`오른쪽연속값 : ${diagonal}`);
+                if (diagonal === 5) {
+                    alert("게임끝");
+                }
+            } else {
+                diagonal = 1;
+                console.log(`오른쪽초기값: ${diagonal}`);
+            }
+            //대각선2
+            if (wrows[i][j] + 1 === wrows[i + 1][j]) {
+                diagonal2++
+                console.log(`왼쪽대각선연속값 : ${diagonal2}`);
+                if (diagonal2 === 5) {
+                    alert("게임끝");
+                }
+            } else {
+                diagonal2 = 1;
+                console.log(`왼쪽대각선초기값: ${diagonal2}`);
+            }
+            //세로
+            if (wrows[i][j] === wrows[i + 1][j]) {
+                colcount++
+                console.log(`세로연속값 : ${colcount}`);
+                if (colcount === 5) {
+                    alert("게임끝");
+                }
+            } else {
+                colcount = 1;
+                console.log(`세로초기값: ${colcount}`);
+            }
+            //가로 
+            if (wrows[i][j] - wrows[i][j + 1] === 1) {
+                rowwcount++
+                console.log(`가로연속값 : ${rowwcount}`);
+                if (rowwcount === 5) {
+                    alert("게임끝");
+                }
+            } else {
+                rowwcount = 1;
+                console.log(`가로초기값: ${rowwcount}`);
+            }
+        }
+    }
+}
+function blackjudge(){
+    for (let i = 1; i < brows.length; i++) {
+        for (let j = 0; j < brows[i].length; j++) {
+            //대각선1
+            if (brows[i][j] - 1 === brows[i + 1][j]) {
+                diagonalb++
+                console.log(`흑돌오른쪽연속값 : ${diagonalb}`);
+                if (diagonalb === 5) {
+                    alert("게임끝");
+                }
+            } else {
+                diagonalb = 1;
+                console.log(`흑돌오른쪽초기값: ${diagonalb}`);
+            }
+            //대각선2
+            if (brows[i][j] + 1 === brows[i + 1][j]) {
+                diagonal2b++
+                console.log(`흑돌왼쪽대각선연속값 : ${diagonal2b}`);
+                if (diagonal2b === 5) {
+                    alert("게임끝");
+                }
+            } else {
+                diagonal2b = 1;
+                console.log(`흑돌왼쪽대각선초기값: ${diagonal2b}`);
+            }
+            //세로
+            if (brows[i][j] === brows[i + 1][j]) {
+                colcountb++
+                console.log(`흑돌세로연속값 : ${colcountb}`);
+                if (colcountb === 5) {
+                    alert("게임끝");
+                }
+            } else {
+                colcountb = 1;
+                console.log(`흑돌세로초기값: ${colcountb}`);
+            }
+            //가로 
+            if (brows[i][j] - brows[i][j + 1] === 1) {
+                rowwcountb++
+                console.log(`흑돌가로연속값 : ${rowwcountb}`);
+                if (rowwcountb === 5) {
+                    alert("게임끝");
+                }
+            } else {
+                rowwcountb = 1;
+                console.log(`흑돌가로초기값: ${rowwcountb}`);
+            }
+        }
+    }
+}

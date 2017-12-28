@@ -88,10 +88,10 @@ let brows = new Array();
 let wcount = 1;
 let bcount = 1;
 
-let rowwcount = 1;
-let colcount = 1;
-let diagonal = 1;
-let diagonal2 = 1;
+// let rowwcount = 1;
+// let colcount = 1;
+// let diagonal = 1;
+// let diagonal2 = 1;
 
 let rowwcountb = 1;
 let colcountb = 1;
@@ -155,11 +155,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function whitejudge() {
+    let diagonal = 1;
+    let rowwcount = 1;
+    let colcount = 1;
+    let diagonal2 = 1;
     for (let i = 1; i < wrows.length; i++) {
         for (let j = 0; j < wrows[i].length; j++) {
             //대각선1
-             
-            if (wrows[i-1].includes(wrows[i][j] + 1)) {
+
+            if (wrows[i - 1].includes(wrows[i][j] + 1)) {
+
                 diagonal++
                 console.log(`오른쪽대각선연속값 : ${diagonal}`);
                 if (diagonal >= 5) {
@@ -170,7 +175,7 @@ function whitejudge() {
                 // console.log(`오른쪽대각선초기값: ${diagonal}`);
             }
             //대각선2
-          
+
             if (wrows[i + 1].includes(wrows[i][j] + 1)) {
                 diagonal2++
                 console.log(`왼쪽대각선연속값 : ${diagonal2}`);
@@ -182,8 +187,8 @@ function whitejudge() {
                 // console.log(`왼쪽대각선초기값: ${diagonal2}`);
             }
             //세로
-         
-            if (wrows[i+1].includes(wrows[i][j])) {
+
+            if (wrows[i + 1].includes(wrows[i][j])) {
                 colcount++
                 console.log(`세로연속값 : ${colcount}`);
                 if (colcount >= 5) {

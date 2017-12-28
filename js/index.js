@@ -55,11 +55,14 @@ function showSlides(n){
     // }
     for(let i = 0; i < slides.length; i++){
         slides[i].style.animation = 'disappear 0.5s';
-        slides[i].style.display = 'none';
+        
+        slides[i].style.zIndex = "0";
     }
   
     slides[carouselIndex-1].style.animation = 'show 0.5s';
-    slides[carouselIndex - 1].style.display = 'block';
+  
+    slides[carouselIndex - 1].style.zIndex = "1";
+    console.log(carouselIndex);
     // slides[carouselIndex - 1].style.animation-name = 'caro1';
 }
 

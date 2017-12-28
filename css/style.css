@@ -274,6 +274,7 @@ a:hover {
 }
 .carousel-prev,
 .carousel-next {
+    z-index: 3;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

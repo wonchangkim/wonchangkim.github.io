@@ -50,15 +50,15 @@ function showSlides(n){
     if( n > slides.length){
         carouselIndex = 1;
     }
-    if( n < 1){
-        carouselIndex = slides.length;
-    }
+    // if( n < 1){
+    //     carouselIndex = slides.length;
+    // }
     for(let i = 0; i < slides.length; i++){
         slides[i].style.animation = 'disappear 0.5s';
         slides[i].style.display = 'none';
     }
-    slides[carouselIndex-1].style.animation = 'disappear 0.5s';
-    slides[carouselIndex].style.animation = 'show 0.5s';
+  
+    slides[carouselIndex-1].style.animation = 'show 0.5s';
     slides[carouselIndex - 1].style.display = 'block';
     // slides[carouselIndex - 1].style.animation-name = 'caro1';
 }

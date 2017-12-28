@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert("이미바둑알이있습니다.");
                 } else {
                     el.classList.add('white');
-                    blakcPause();
-                    whitetimeReset();
+                    // blakcPause();
+                    // whitetimeReset();
                     // console.log(`흰돌카운트: ${wcount}`);
                     wrows[r].push(Number(el.classList[0].slice(4, 7)));
                     wrows[r].sort(function (a, b) {
@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert("이미바둑알이있습니다.");
                 } else {
                     el.classList.add('black');
-                    whitePause();
-                    blacktimeReset();
+                    // whitePause();
+                    // blacktimeReset();
                     bcount += 1;
                     // console.log(`흑돌카운트: ${bcount}`);
                     brows[r].push(Number(el.classList[0].slice(4, 7)));
@@ -158,51 +158,62 @@ function whitejudge() {
     for (let i = 1; i < wrows.length; i++) {
         for (let j = 0; j < wrows[i].length; j++) {
             //대각선1
-            if (wrows[i][j] - 1 === wrows[i + 1][j]) {
+             
+            if (wrows[i-1].includes(wrows[i][j] + 1)) {
                 diagonal++
-                console.log(`오른쪽연속값 : ${diagonal}`);
-                if (diagonal === 5) {
+                console.log(`오른쪽대각선연속값 : ${diagonal}`);
+                if (diagonal >= 5) {
                     alert("게임끝");
                 }
             } else {
                 diagonal = 1;
-                console.log(`오른쪽초기값: ${diagonal}`);
+                // console.log(`오른쪽대각선초기값: ${diagonal}`);
             }
             //대각선2
-            if (wrows[i][j] + 1 === wrows[i + 1][j]) {
+          
+            if (wrows[i + 1].includes(wrows[i][j] + 1)) {
                 diagonal2++
                 console.log(`왼쪽대각선연속값 : ${diagonal2}`);
-                if (diagonal2 === 5) {
+                if (diagonal2 >= 5) {
                     alert("게임끝");
                 }
             } else {
                 diagonal2 = 1;
-                console.log(`왼쪽대각선초기값: ${diagonal2}`);
+                // console.log(`왼쪽대각선초기값: ${diagonal2}`);
             }
             //세로
-            if (wrows[i][j] === wrows[i + 1][j]) {
+         
+            if (wrows[i+1].includes(wrows[i][j])) {
                 colcount++
                 console.log(`세로연속값 : ${colcount}`);
-                if (colcount === 5) {
+                if (colcount >= 5) {
                     alert("게임끝");
                 }
             } else {
                 colcount = 1;
-                console.log(`세로초기값: ${colcount}`);
+                // console.log(`세로초기값: ${colcount}`);
             }
             //가로 
             if (wrows[i][j] - wrows[i][j + 1] === 1) {
                 rowwcount++
                 console.log(`가로연속값 : ${rowwcount}`);
-                if (rowwcount === 5) {
+                if (rowwcount >= 5) {
                     alert("게임끝");
                 }
             } else {
                 rowwcount = 1;
-                console.log(`가로초기값: ${rowwcount}`);
+                // console.log(`가로초기값: ${rowwcount}`);
             }
         }
     }
+    // console.log(`오른쪽대각선연속값 : ${diagonal}`);
+    // console.log(`오른쪽대각선초기값: ${diagonal}`);
+    // console.log(`왼쪽대각선연속값 : ${diagonal2}`);
+    // console.log(`왼쪽대각선초기값: ${diagonal2}`);
+    // console.log(`세로연속값 : ${colcount}`);
+    // console.log(`세로초기값: ${colcount}`);
+    // console.log(`가로연속값 : ${rowwcount}`);
+    // console.log(`가로초기값: ${rowwcount}`);
 }
 
 function blackjudge() {
@@ -217,7 +228,7 @@ function blackjudge() {
                 }
             } else {
                 diagonalb = 1;
-                console.log(`흑돌오른쪽초기값: ${diagonalb}`);
+                // console.log(`흑돌오른쪽초기값: ${diagonalb}`);
             }
             //대각선2
             if (brows[i][j] + 1 === brows[i + 1][j]) {
@@ -228,7 +239,7 @@ function blackjudge() {
                 }
             } else {
                 diagonal2b = 1;
-                console.log(`흑돌왼쪽대각선초기값: ${diagonal2b}`);
+                // console.log(`흑돌왼쪽대각선초기값: ${diagonal2b}`);
             }
             //세로
             if (brows[i][j] === brows[i + 1][j]) {
@@ -239,7 +250,7 @@ function blackjudge() {
                 }
             } else {
                 colcountb = 1;
-                console.log(`흑돌세로초기값: ${colcountb}`);
+                // console.log(`흑돌세로초기값: ${colcountb}`);
             }
             //가로 
             if (brows[i][j] - brows[i][j + 1] === 1) {
@@ -250,8 +261,16 @@ function blackjudge() {
                 }
             } else {
                 rowwcountb = 1;
-                console.log(`흑돌가로초기값: ${rowwcountb}`);
+                // console.log(`흑돌가로초기값: ${rowwcountb}`);
             }
         }
     }
+    // console.log(`흑돌오른쪽연속값 : ${diagonalb}`);
+    // console.log(`흑돌오른쪽초기값: ${diagonalb}`);
+    // console.log(`흑돌왼쪽대각선연속값 : ${diagonal2b}`);
+    // console.log(`흑돌왼쪽대각선초기값: ${diagonal2b}`);
+    // console.log(`흑돌세로연속값 : ${colcountb}`);
+    // console.log(`흑돌세로초기값: ${colcountb}`);
+    // console.log(`흑돌가로연속값 : ${rowwcountb}`);
+    // console.log(`흑돌가로초기값: ${rowwcountb}`);
 }

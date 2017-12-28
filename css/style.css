@@ -260,13 +260,30 @@ display: none;
 }
 
 
-@keyframes disappear {
+@keyframes disappearleft {
     from {left:0px;}
     to {left: -700px;}
 }
-@keyframes show {
+@keyframes showleft {
     from {
+        left: 700px;
+    }
+    to {
+        left: 0px;
+    }
+}
+@keyframes disappearright {
+    from {
+        right: 0px;
+    }
+    to {
         right: -700px;
+    }
+}
+
+@keyframes showright {
+    from {
+        right: 700px;
     }
     to {
         right: 0px;

@@ -35,3 +35,32 @@ function modalclose() {
     modalwarp.classList.remove('modalwarpshow');
 
 }
+
+let carouselIndex = 1;
+
+function nextslide(n){
+    showSlides(carouselIndex += n);
+}
+function currentSlides(n){
+    showSlides(carouselIndex = n);
+}
+
+function showSlides(n){
+    let slides = document.querySelectorAll('.img');
+    if( n > slides.length){
+        carouselIndex = 1;
+    }
+    if( n < 1){
+        carouselIndex = slides.length;
+    }
+    for(let i = 0; i < slides.length; i++){
+        slides[i].style.animation = 'disappear 0.5s';
+        slides[i].style.display = 'none';
+    }
+    slides[carouselIndex-1].style.animation = 'disappear 0.5s';
+    slides[carouselIndex].style.animation = 'show 0.5s';
+    slides[carouselIndex - 1].style.display = 'block';
+    // slides[carouselIndex - 1].style.animation-name = 'caro1';
+}
+
+

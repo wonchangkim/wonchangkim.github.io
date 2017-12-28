@@ -1,4 +1,3 @@
-
 //타이머
 let progressValue = document.querySelector('.progress__value');
 let progressValue2 = document.querySelector('.progress__value2');
@@ -32,7 +31,7 @@ function whitePause() {
             if (whitetimer === 0) {
                 whitetimer = 5;
                 whitetime--;
-                if(whitetime < 0){
+                if (whitetime < 0) {
                     alert("게임끝")
                 }
             }
@@ -51,7 +50,7 @@ function blakcPause() {
             blacktimer--;
             progressValue2.style.strokeDashoffset = CIRCUMFERENCE * (1 - (blacktimer * 2 / 10));
             progressValue2.style.strokeDasharray = CIRCUMFERENCE;
-            limitValue2.style.strokeDashoffset = cr* (1 - (blacktime * 3 / 9));
+            limitValue2.style.strokeDashoffset = cr * (1 - (blacktime * 3 / 9));
             limitValue2.style.strokeDasharray = cr;
             document.querySelector('.blackcounttxt').innerHTML = blacktimer;
             document.querySelector('.blacklimittxt').innerHTML = blacktime;
@@ -123,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     wrows[r].sort(function (a, b) {
                         return b - a;
                     });
-                    
+
                     whitejudge(); //판단
                     console.log(wrows);
                     wcount += 1;
@@ -140,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // console.log(`흑돌카운트: ${bcount}`);
                     brows[r].push(Number(el.classList[0].slice(4, 7)));
                     brows[r].sort(function (a, b) {
-                        return a - b;
+                        return b - a;
                     });
                     blackjudge();
                     console.log(brows);
@@ -155,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-function whitejudge(){
+function whitejudge() {
     for (let i = 1; i < wrows.length; i++) {
         for (let j = 0; j < wrows[i].length; j++) {
             //대각선1
@@ -205,7 +204,8 @@ function whitejudge(){
         }
     }
 }
-function blackjudge(){
+
+function blackjudge() {
     for (let i = 1; i < brows.length; i++) {
         for (let j = 0; j < brows[i].length; j++) {
             //대각선1

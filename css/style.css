@@ -250,12 +250,12 @@ a:hover {
 }
 
 .i2 {
-
+display: none;
     background-color: darkgray;
 }
 
 .i3 {
-    
+    display: none;
     background-color: firebrick;
 }
 

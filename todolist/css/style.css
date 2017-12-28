@@ -125,6 +125,7 @@ body {
 }
 .todolist{
   margin-top: 140px;
+  overflow: hidden;
 
 }
 #todo-input {
@@ -152,6 +153,7 @@ body {
 .wrap {
   padding: 5px 10px 5px 10px;
   position: relative;
+
 
 }
 

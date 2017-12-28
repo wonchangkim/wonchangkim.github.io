@@ -1,7 +1,7 @@
 function carouselbtn() {
     let collapse = document.querySelector('.collapse');
     let collapsecontent = document.querySelector('.collapsecontent');
- 
+
     if (collapse.classList.contains('collapseshow')) {
         collapse.classList.remove('collapseshow');
         collapsecontent.classList.remove('collapsecontentshow');
@@ -25,7 +25,7 @@ function modalbtn() {
         modal.classList.add('modalshow');
         modalwarp.classList.add('modalwarpshow');
     }
-    
+
 }
 
 function modalclose() {
@@ -36,34 +36,34 @@ function modalclose() {
 
 }
 
-let carouselIndex = 1;
 
-function nextslide(n){
-    showSlides(carouselIndex += n);
-}
-function currentSlides(n){
-    showSlides(carouselIndex = n);
-}
+let dcount = 0;
+let scount = 1;
 
-function showSlides(n){
+
+function showSlides() {
     let slides = document.querySelectorAll('.img');
-    if( n > slides.length){
-        carouselIndex = 1;
+
+    if (dcount === 2) {
+        scount = 0;
     }
-    // if( n < 1){
-    //     carouselIndex = slides.length;
-    // }
-    for(let i = 0; i < slides.length; i++){
-        slides[i].style.animation = 'disappear 0.5s';
-        
-        slides[i].style.zIndex = "0";
+    if (scount === 1) {
+        dcount = 0;
     }
-  
-    slides[carouselIndex-1].style.animation = 'show 0.5s';
-  
-    slides[carouselIndex - 1].style.zIndex = "1";
-    console.log(carouselIndex);
-    // slides[carouselIndex - 1].style.animation-name = 'caro1';
+    console.log(dcount, scount);
+   
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.animation = null;
+        slides[i].style.zIndex = null;
+        slides[i].style.display = 'none';
+    }
+    slides[dcount].style.animation = 'disappear 0.5s';
+    slides[dcount].style.zIndex = '0';
+    slides[dcount].style.display = 'block';
+    slides[scount].style.animation = 'show 0.5s';
+    slides[scount].style.display = 'block';
+    slides[scount].style.zIndex = '1';
+    
+    dcount++;
+    scount++;
 }
-
-

@@ -99,7 +99,14 @@ let diagonalb = 1;
 let diagonal2b = 1;
 let whiteSamearry = new Array();
 let sameNum;
-
+function compareSecondColumn(a, b) {
+    if (a[0] === b[0]) {
+        return 0;
+    }
+    else {
+        return (a[0] < b[0]) ? -1 : 1;
+    }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.col').forEach(el => {
@@ -120,20 +127,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     let wrr = new Array();
                     wrr.push(Number(r), Number(el.classList[0].slice(4, 7)));
                     wrows.push(wrr);
+                    wrows.sort(compareSecondColumn) ;
                     console.log(wrows);
 
                     if (wrows.length >= 2) {
                         let colcount = 1;
                         for (let i = 0, j = 1; i < wrows.length - 1, j < wrows.length; i++, j++) {
-                            if (wrows[i][1] === wrows[j][1]) {
+                            if (wrows[i][0] === wrows[j][0] - 1 && wrows[i][1] === wrows[j][1]) {
                                 colcount++
                                 console.log(colcount);
-                                if (colcount === 5) {
+                                if (colcount >= 5) {
                                     alert('게임끝');
                                 }
-                            }  
-
+                            }else{
+                                colcount = 1;
+                                console.log(colcount);
+                            }
                         }
+                       
                     }
 
                 };

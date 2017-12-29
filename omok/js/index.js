@@ -118,10 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     // blakcPause();
                     // whitetimeReset();
                     // console.log(`흰돌카운트: ${wcount}`);
-                    wrows[r].push(Number(el.classList[0].slice(4, 7)));
-                    wrows[r].sort(function (a, b) {
-                        return b - a;
-                    });
+                    
+                    let wrr = new Array();
+                    wrr.push(Number(r), Number(el.classList[0].slice(4, 7)));
+                    wrows.push(wrr);
+                    // wrows[r].sort(function (a, b) {
+                    //     return b - a;
+                    // });
 
                     whitejudge(); //판단
                     console.log(wrows);

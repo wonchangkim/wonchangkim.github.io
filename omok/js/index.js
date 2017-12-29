@@ -89,7 +89,7 @@ let wcount = 1;
 let bcount = 1;
 
 let rowwcount = 1;
-let colcount = 1;
+// let colcount = 1;
 let diagonal = 1;
 let diagonal2 = 1;
 
@@ -123,20 +123,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log(wrows);
 
                     if (wrows.length >= 2) {
+                        let colcount = 1;
                         for (let i = 0, j = 1; i < wrows.length - 1, j < wrows.length; i++, j++) {
-
                             if (wrows[i][1] === wrows[j][1]) {
                                 colcount++
+                                console.log(colcount);
+                                if (colcount === 5) {
+                                    alert('게임끝');
+                                }
+                            }  
 
-                            }
-                            if (colcount < 4 && colcount > 0) {
-                                colcount = 1;
-                            } else if (colcount >= 4) {
-                                console.log('aaaaaa');
-                            }
-
-                            //세로
-console.log('bbbb');
                         }
                     }
 

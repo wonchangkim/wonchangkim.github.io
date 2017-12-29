@@ -88,10 +88,10 @@ let brows = new Array();
 let wcount = 1;
 let bcount = 1;
 
-// let rowwcount = 1;
-// let colcount = 1;
-// let diagonal = 1;
-// let diagonal2 = 1;
+let rowwcount = 1;
+let colcount = 1;
+let diagonal = 1;
+let diagonal2 = 1;
 
 let rowwcountb = 1;
 let colcountb = 1;
@@ -154,66 +154,66 @@ function whitejudge() {
     let rowwcount = 1;
     let colcount = 1;
     let diagonal2 = 1;
-    // for (let i = 1; i < wrows.length; i++) {
-    //     for (let j = 0; j < wrows[i].length; j++) {
-    //         //대각선1
+    for (let i = 1; i < wrows.length; i++) {
+        for (let j = 0; j < wrows[i].length; j++) {
+            //대각선1
 
-    //         if (wrows[i - 1].includes(wrows[i][j] + 1)) {
+            if (wrows[i - 1].includes(wrows[i][j] + 1)) {
 
-    //             diagonal++
-    //             console.log(`오른쪽대각선연속값 : ${diagonal}`);
-    //             if (diagonal >= 5) {
-    //                 alert("게임끝");
-    //             }
-    //         } else {
-    //             diagonal = 1;
-    //             // console.log(`오른쪽대각선초기값: ${diagonal}`);
-    //         }
-    //         //대각선2
+                diagonal++
+                console.log(`오른쪽대각선연속값 : ${diagonal}`);
+                if (diagonal >= 5) {
+                    alert("게임끝");
+                }
+            } else {
+                diagonal = 1;
+                // console.log(`오른쪽대각선초기값: ${diagonal}`);
+            }
+            //대각선2
 
-    //         if (wrows[i + 1].includes(wrows[i][j] + 1)) {
-    //             diagonal2++
-    //             console.log(`왼쪽대각선연속값 : ${diagonal2}`);
-    //             if (diagonal2 >= 5) {
-    //                 alert("게임끝");
-    //             }
-    //         } else {
-    //             diagonal2 = 1;
-    //             // console.log(`왼쪽대각선초기값: ${diagonal2}`);
-    //         }
-    //         //세로
+            if (wrows[i + 1].includes(wrows[i][j] + 1)) {
+                diagonal2++
+                console.log(`왼쪽대각선연속값 : ${diagonal2}`);
+                if (diagonal2 >= 5) {
+                    alert("게임끝");
+                }
+            } else {
+                diagonal2 = 1;
+                // console.log(`왼쪽대각선초기값: ${diagonal2}`);
+            }
+            //세로
 
-    //         if (wrows[i + 1].includes(wrows[i][j])) {
-    //             colcount++
-    //             console.log(`세로연속값 : ${colcount}`);
-    //             if (colcount >= 5) {
-    //                 alert("게임끝");
-    //             }
-    //         } else {
-    //             colcount = 1;
-    //             // console.log(`세로초기값: ${colcount}`);
-    //         }
-    //         //가로 
-    //         if (wrows[i][j] - wrows[i][j + 1] === 1) {
-    //             rowwcount++
-    //             console.log(`가로연속값 : ${rowwcount}`);
-    //             if (rowwcount >= 5) {
-    //                 alert("게임끝");
-    //             }
-    //         } else {
-    //             rowwcount = 1;
-    // console.log(`가로초기값: ${rowwcount}`);
-    //     }
-    // }
-    // }
-    // console.log(`오른쪽대각선연속값 : ${diagonal}`);
-    // console.log(`오른쪽대각선초기값: ${diagonal}`);
-    // console.log(`왼쪽대각선연속값 : ${diagonal2}`);
-    // console.log(`왼쪽대각선초기값: ${diagonal2}`);
-    // console.log(`세로연속값 : ${colcount}`);
-    // console.log(`세로초기값: ${colcount}`);
-    // console.log(`가로연속값 : ${rowwcount}`);
-    // console.log(`가로초기값: ${rowwcount}`);
+            if (wrows[i + 1].includes(wrows[i][j])) {
+                colcount++
+                console.log(`세로연속값 : ${colcount}`);
+                if (colcount >= 5) {
+                    alert("게임끝");
+                }
+            } else {
+                colcount = 1;
+                // console.log(`세로초기값: ${colcount}`);
+            }
+            //가로 
+            if (wrows[i][j] - wrows[i][j + 1] === 1) {
+                rowwcount++
+                console.log(`가로연속값 : ${rowwcount}`);
+                if (rowwcount >= 5) {
+                    alert("게임끝");
+                }
+            } else {
+                rowwcount = 1;
+    console.log(`가로초기값: ${rowwcount}`);
+        }
+    }
+    }
+    console.log(`오른쪽대각선연속값 : ${diagonal}`);
+    console.log(`오른쪽대각선초기값: ${diagonal}`);
+    console.log(`왼쪽대각선연속값 : ${diagonal2}`);
+    console.log(`왼쪽대각선초기값: ${diagonal2}`);
+    console.log(`세로연속값 : ${colcount}`);
+    console.log(`세로초기값: ${colcount}`);
+    console.log(`가로연속값 : ${rowwcount}`);
+    console.log(`가로초기값: ${rowwcount}`);
 }
 
 function blackjudge() {
@@ -226,64 +226,64 @@ function blackjudge() {
             
         }
         for (let j = 0; j < brows[i].length; j++) {
-            //대각선1
-            // if (i === 15 && brows[i][j] === brows[i - 1][j] + 1 && brows[i][j] === brows[i - 2][j] + 2 && brows[i][j] === brows[i - 3][j] + 3 && brows[i][j] === brows[i - 4][j] + 4){
-            //     console.log("aaaaaaa");
-            //     alert("게임끝");
-            // }
+            // 대각선1
+            if (i === 15 && brows[i][j] === brows[i - 1][j] + 1 && brows[i][j] === brows[i - 2][j] + 2 && brows[i][j] === brows[i - 3][j] + 3 && brows[i][j] === brows[i - 4][j] + 4){
+                console.log("aaaaaaa");
+                alert("게임끝");
+            }
 
 
             if (brows[i][j] === brows[i - 1][j] - 1 && brows[i][j] === brows[i - 2][j] - 2 && brows[i][j] === brows[i - 3][j] - 3 && brows[i][j] === brows[i - 4][j] - 4) {
                 console.log("aaaaaaa");
                 alert("게임끝");
-                // diagonalb++
-                // console.log(`흑돌오른쪽연속값 : ${diagonalb}`);
-                // if (diagonalb === 5) {
-                //     alert("게임끝");
-                // }
+                diagonalb++
+                console.log(`흑돌오른쪽연속값 : ${diagonalb}`);
+                if (diagonalb === 5) {
+                    alert("게임끝");
+                }
             }
 
-            //대각선2
-            // if (brows[i][j] + 1 === brows[i + 1][j]) {
-            //     diagonal2b++
-            //     console.log(`흑돌왼쪽대각선연속값 : ${diagonal2b}`);
-            //     if (diagonal2b === 5) {
-            //         alert("게임끝");
-            //     }
-            // } else {
-            //     diagonal2b = 1;
-            //     // console.log(`흑돌왼쪽대각선초기값: ${diagonal2b}`);
-            // }
-            //세로
-            // if (brows[i][j] === brows[i + 1][j]) {
-            //     colcountb++
-            //     console.log(`흑돌세로연속값 : ${colcountb}`);
-            //     if (colcountb === 5) {
-            //         alert("게임끝");
-            //     }
-            // } else {
-            //     colcountb = 1;
-            //     // console.log(`흑돌세로초기값: ${colcountb}`);
-            // }
-            //가로 
-            //     if (brows[i][j] - brows[i][j + 1] === 1) {
-            //         rowwcountb++
-            //         console.log(`흑돌가로연속값 : ${rowwcountb}`);
-            //         if (rowwcountb === 5) {
-            //             alert("게임끝");
-            //         }
-            //     } else {
-            //         rowwcountb = 1;
-            //         // console.log(`흑돌가로초기값: ${rowwcountb}`);
-            //     }
+            // 대각선2
+            if (brows[i][j] + 1 === brows[i + 1][j]) {
+                diagonal2b++
+                console.log(`흑돌왼쪽대각선연속값 : ${diagonal2b}`);
+                if (diagonal2b === 5) {
+                    alert("게임끝");
+                }
+            } else {
+                diagonal2b = 1;
+                // console.log(`흑돌왼쪽대각선초기값: ${diagonal2b}`);
+            }
+            // 세로
+            if (brows[i][j] === brows[i + 1][j]) {
+                colcountb++
+                console.log(`흑돌세로연속값 : ${colcountb}`);
+                if (colcountb === 5) {
+                    alert("게임끝");
+                }
+            } else {
+                colcountb = 1;
+                // console.log(`흑돌세로초기값: ${colcountb}`);
+            }
+            // 가로 
+                if (brows[i][j] - brows[i][j + 1] === 1) {
+                    rowwcountb++
+                    console.log(`흑돌가로연속값 : ${rowwcountb}`);
+                    if (rowwcountb === 5) {
+                        alert("게임끝");
+                    }
+                } else {
+                    rowwcountb = 1;
+                    // console.log(`흑돌가로초기값: ${rowwcountb}`);
+                }
         }
     }
-    // console.log(`흑돌오른쪽연속값 : ${diagonalb}`);
-    // console.log(`흑돌오른쪽초기값: ${diagonalb}`);
-    // console.log(`흑돌왼쪽대각선연속값 : ${diagonal2b}`);
-    // console.log(`흑돌왼쪽대각선초기값: ${diagonal2b}`);
-    // console.log(`흑돌세로연속값 : ${colcountb}`);
-    // console.log(`흑돌세로초기값: ${colcountb}`);
-    // console.log(`흑돌가로연속값 : ${rowwcountb}`);
-    // console.log(`흑돌가로초기값: ${rowwcountb}`);
+    console.log(`흑돌오른쪽연속값 : ${diagonalb}`);
+    console.log(`흑돌오른쪽초기값: ${diagonalb}`);
+    console.log(`흑돌왼쪽대각선연속값 : ${diagonal2b}`);
+    console.log(`흑돌왼쪽대각선초기값: ${diagonal2b}`);
+    console.log(`흑돌세로연속값 : ${colcountb}`);
+    console.log(`흑돌세로초기값: ${colcountb}`);
+    console.log(`흑돌가로연속값 : ${rowwcountb}`);
+    console.log(`흑돌가로초기값: ${rowwcountb}`);
 }

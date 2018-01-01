@@ -66,7 +66,6 @@ function blakcPause() {
     } else {
         clearInterval(blackinterval);
         blackinterval = 0;
-
     }
 }
 
@@ -80,36 +79,14 @@ function blacktimeReset() {
     blackinterval = 0;
 }
 ///타이머끝
-
 //게임세팅
 let turn = 1;
 let wrows = new Array();
 let brows = new Array();
-let wcount = 1;
-let bcount = 1;
-
-let rowwcount = 1;
-// let colcount = 1;
-let diagonal = 1;
-let diagonal2 = 1;
-
-let rowwcountb = 1;
-let colcountb = 1;
-let diagonalb = 1;
-let diagonal2b = 1;
-let whiteSamearry = new Array();
-let sameNum;
-
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.col').forEach(el => {
-
-        let r = el.closest('.row').classList[0].slice(4, 7);
-        //각각의 배열
-        // wrows[r] = new Array();
-
         el.addEventListener('click', e => {
-
             if (turn % 2 !== 0) {
                 if (el.classList.contains('white') || el.classList.contains('black')) {
                     alert("이미바둑알이있습니다.");
@@ -118,13 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     // blakcPause();
                     // whitetimeReset();
                     let wrr = new Array();
-                    wrr.push(Number(r), Number(el.classList[0].slice(4, 7)));
+                    wrr.push(Number(el.closest('.row').classList[0].slice(4, 7)), Number(el.classList[0].slice(4, 7)));
                     wrows.push(wrr);
-                    // judgeCol();
-                    judgediagonal();
-                  
-                    // judgerow();
-
+                    judgewhite();
                 };
                 turn++;
             } else {
@@ -135,14 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     // whitePause();
                     // blacktimeReset(); 
 
-                    //배열추가
                     let brr = new Array();
-                    brr.push(Number(r), Number(el.classList[0].slice(4, 7)));
+                    brr.push(Number(el.closest('.row').classList[0].slice(4, 7)), Number(el.classList[0].slice(4, 7)));
                     brows.push(brr);
-                    // brows.sort(function (a, b) {
-                    //     return b -a;
-                    // }); 정렬
-                    console.log(brows);
+                    judgebalck();
                 };
                 turn++;
             };
@@ -150,79 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function judgeCol() {
-    let wcolcount = 1;
-    wrows.sort(function (a, b) {
-        return a[1] - b[1]; //col값정열
-    });
-    const colsamerow = {}; //같은 col 모으기
-
-    for (let c of wrows) {
-        if (colsamerow[c[1]] === undefined) {
-            colsamerow[c[1]] = [];
-        }
-        colsamerow[c[1]].push(c[0]);
-        colsamerow[c[1]].sort(function (a, b) {
-            return a - b;
-        })
-    }
-    for (let item in colsamerow) {
-        for (let i = 0, j = 1; i < colsamerow[item].length - 1, j < colsamerow[item].length; i++, j++) {
-            console.log(colsamerow[item])
-            if (colsamerow[item].length > 4 && colsamerow[item][i] === colsamerow[item][j] - 1) {
-                wcolcount++;
-                console.log(wcolcount);
-                if (wcolcount === 5) {
-                    alert('게임끝');
-                }
-            } else {
-                wcolcount = 1;
-                console.log(wcolcount);
-            }
-        }
-    }
-    console.log(colsamerow);
-    console.log(wrows);
-}
-function judgerow() {
-    let rowwcount = 1;
-    wrows.sort(function (a, b) {
-        return a[1] - b[1]; //col값정열
-    });
-    const rowsamecol = {}; //같은 col 모으기
-
-    for (let c of wrows) {
-        if (rowsamecol[c[1]] === undefined) {
-            rowsamecol[c[1]] = [];
-        }
-        rowsamecol[c[1]].push(c[0]);
-        rowsamecol[c[1]].sort(function (a, b) {
-            return a - b;
-        })
-    }
-    for (let item in rowsamecol) {
-        for (let i = 0, j = 1; i < rowsamecol[item].length - 1, j < rowsamecol[item].length; i++ , j++) {
-            console.log(rowsamecol[item])
-            if (rowsamecol[item].length > 4 && rowsamecol[item][i] === rowsamecol[item][j] - 1) {
-                rowwcount++;
-                console.log(rowwcount);
-                if (rowwcount === 5) {
-                    alert('게임끝');
-                }
-            } else {
-                rowwcount = 1;
-                console.log(rowwcount);
-            }
-        }
-    }
-    console.log(rowsamecol);
-    console.log(wrows);
-}
-
-function judgediagonal() {
-    let samediagonalcount = 1;
-    ; //같은 col 모으기
+function judgewhite() {
     const samediagonalarry = [];
+    const samediagonalarry1 = [];
+    const samecol = [];
+    const samerow = [];
     wrows.sort(function (a, b) {
         if (a[0] === b[0]) {
             let x = a[1];
@@ -231,29 +132,80 @@ function judgediagonal() {
         }
         return a[0] - b[0];
     });
-   
-    console.log(wrows);
-    for (let i=0; i <wrows.length-1; i ++) {
+    for (let i = 0; i < wrows.length - 1; i++) {
         samediagonalarry[wrows[i]] = [];
-        for (let j = 1; j < wrows.length; j++){
-           
+        samediagonalarry1[wrows[i]] = [];
+        samecol[wrows[i]] = [];
+        samerow[wrows[i]] = [];
+
+        for (let j = 1; j < wrows.length; j++) {
+            if (wrows[i][0] === wrows[j][0] && wrows[i][1] === wrows[j][1] - 1 || wrows[i][0] === wrows[j][0] && wrows[i][1] === wrows[j][1] - 2 || wrows[i][0] === wrows[j][0] && wrows[i][1] === wrows[j][1] - 3 || wrows[i][0] === wrows[j][0] && wrows[i][1] === wrows[j][1] - 4) {
+                samerow[wrows[i]].push(wrows[j]);
+                console.log(samerow);
+                console.log(wrows);
+            }
+            if (wrows[i][0] === wrows[j][0] - 1 && wrows[i][1] === wrows[j][1] || wrows[i][0] === wrows[j][0] - 2 && wrows[i][1] === wrows[j][1] || wrows[i][0] === wrows[j][0] - 3 && wrows[i][1] === wrows[j][1] || wrows[i][0] === wrows[j][0] - 4 && wrows[i][1] === wrows[j][1]) {
+                samecol[wrows[i]].push(wrows[j]);
+                console.log(samecol);
+                console.log(wrows);
+            }
             if (wrows[i][0] === wrows[j][0] - 1 && wrows[i][1] === wrows[j][1] - 1 || wrows[i][0] === wrows[j][0] - 2 && wrows[i][1] === wrows[j][1] - 2 || wrows[i][0] === wrows[j][0] - 3 && wrows[i][1] === wrows[j][1] - 3 || wrows[i][0] === wrows[j][0] - 4 && wrows[i][1] === wrows[j][1] - 4) {
                 samediagonalarry[wrows[i]].push(wrows[j]);
                 console.log(samediagonalarry);
-           }
-            if (samediagonalarry[wrows[i]].length >= 4) {
-                alert('게임끝');
+            }
+            if (wrows[i][0] === wrows[j][0] - 1 && wrows[i][1] === wrows[j][1] + 1 || wrows[i][0] === wrows[j][0] - 2 && wrows[i][1] === wrows[j][1] + 2 || wrows[i][0] === wrows[j][0] - 3 && wrows[i][1] === wrows[j][1] + 3 || wrows[i][0] === wrows[j][0] - 4 && wrows[i][1] === wrows[j][1] + 4) {
+                samediagonalarry1[wrows[i]].push(wrows[j]);
+                console.log(samediagonalarry1);
+            }
+            if (samediagonalarry[wrows[i]].length >= 4 || samediagonalarry1[wrows[i]].length >= 4 || samecol[wrows[i]].length >= 4 || samerow[wrows[i]].length >= 4) {
+                alert('화이트승리');
                 break;
             }
         }
-        console.log(samediagonalcount);
     }
 }
-
-
-function judgerow() {
-    wrows.sort(function (a, b) {
-        return a[0] - b[0]; //row값정열
+function judgebalck() {
+    const samediagonalarryblack = [];
+    const samediagonalarryblack1 = [];
+    const samecolblack = [];
+    const samerowblack = [];
+    brows.sort(function (a, b) {
+        if (a[0] === b[0]) {
+            let x = a[1];
+            let y = b[1];
+            return x < y ? -1 : 1; //이중배열정렬
+        }
+        return a[0] - b[0];
     });
-    console.log(wrows);
+    for (let i = 0; i <brows.length - 1; i++) {
+        samediagonalarryblack[brows[i]] = [];
+        samediagonalarryblack1[brows[i]] = [];
+        samecolblack[brows[i]] = [];
+        samerowblack[brows[i]] = [];
+
+        for (let j = 1; j < brows.length; j++) {
+            if (brows[i][0] === brows[j][0] && brows[i][1] === brows[j][1] - 1 || brows[i][0] === brows[j][0] && brows[i][1] === brows[j][1] - 2 || brows[i][0] === brows[j][0] && brows[i][1] === brows[j][1] - 3 || brows[i][0] === brows[j][0] && brows[i][1] === brows[j][1] - 4) {
+                samerowblack[brows[i]].push(brows[j]);
+                console.log(samerowblack);
+                console.log(brows);
+            }
+            if (brows[i][0] === brows[j][0] - 1 && brows[i][1] === brows[j][1] || brows[i][0] === brows[j][0] - 2 && brows[i][1] === brows[j][1] || brows[i][0] === brows[j][0] - 3 && brows[i][1] === brows[j][1] || brows[i][0] === brows[j][0] - 4 && brows[i][1] === brows[j][1]) {
+                samecolblack[brows[i]].push(brows[j]);
+                console.log(samecolblack);
+                console.log(brows);
+            }
+            if (brows[i][0] === brows[j][0] - 1 && brows[i][1] === brows[j][1] - 1 || brows[i][0] === brows[j][0] - 2 && brows[i][1] === brows[j][1] - 2 || brows[i][0] === brows[j][0] - 3 && brows[i][1] === brows[j][1] - 3 || brows[i][0] === brows[j][0] - 4 && brows[i][1] === brows[j][1] - 4) {
+                samediagonalarryblack[brows[i]].push(brows[j]);
+                console.log(samediagonalarryblack);
+            }
+            if (brows[i][0] === brows[j][0] - 1 && brows[i][1] === brows[j][1] + 1 || brows[i][0] === brows[j][0] - 2 && brows[i][1] === brows[j][1] + 2 || brows[i][0] === brows[j][0] - 3 && brows[i][1] === brows[j][1] + 3 || brows[i][0] === brows[j][0] - 4 && brows[i][1] === brows[j][1] + 4) {
+                samediagonalarryblack1[brows[i]].push(brows[j]);
+                console.log(samediagonalarryblack1);
+            }
+            if (samediagonalarryblack[brows[i]].length >= 4 || samediagonalarryblack1[brows[i]].length >= 4 || samecolblack[brows[i]].length >= 4 || samerowblack[brows[i]].length >= 4) {
+                alert('블랙승리');
+                break;
+            }
+        }
+    }
 }

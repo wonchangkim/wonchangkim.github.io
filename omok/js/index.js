@@ -78,6 +78,24 @@ function blacktimeReset() {
     blackinterval = 0;
 }
 ///타이머끝
+//승리이벤트
+let victory = document.querySelector('.victory')
+let content = document.querySelector('.victorycontent')
+function vicwhite(){
+  if(victory.classList.contains('victoryshow')){
+
+  }else{
+    victory.classList.add('victoryshow');
+    clearInterval(blackinterval);
+    blackinterval = 0;
+  }
+  if(content.classList.contains('showing')){
+
+  }else{
+    content.classList.add('showing');
+  }
+}
+
 //게임세팅
 let turn = 1;
 let wrows = new Array();
@@ -100,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     judgewhite();
                     turn++;
                 };
-                
+
             } else {
                 if (el.classList.contains('white') || el.classList.contains('black')) {
                     alert("이미바둑알이있습니다.");
@@ -108,14 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     el.classList.add('black');
                     whitePause();
-                    blacktimeReset(); 
+                    blacktimeReset();
                     let brr = new Array();
                     brr.push(Number(el.closest('.row').classList[0].slice(4, 7)), Number(el.classList[0].slice(4, 7)));
                     brows.push(brr);
                     judgebalck();
                     turn++;
                 };
-                
+
             };
         });
     });
@@ -160,8 +178,8 @@ function judgewhite() {
                 console.log(samediagonalarry1);
             }
             if (samediagonalarry[wrows[i]].length >= 4 || samediagonalarry1[wrows[i]].length >= 4 || samecol[wrows[i]].length >= 4 || samerow[wrows[i]].length >= 4) {
-                alert('화이트승리');
-                break;
+              vicwhite();
+
             }
         }
     }

@@ -2,7 +2,8 @@
 moment.locale('ko');
 const nowtime = moment().format('LT');
 console.log(nowtime);
-
+let toptime = document.querySelector('.time');
+toptime.innerHTML = `${nowtime}`;
 function myFunction() {
     let chatarea = document.querySelector('.chat-messages-list');
     var node = document.createElement("div");

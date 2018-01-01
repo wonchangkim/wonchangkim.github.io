@@ -9,7 +9,7 @@ let r = 30;
 let CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 let cr = 2 * Math.PI * r;
 
-// 타이머
+
 let whitetimer = 5;
 let whiteinterval = 0;
 let blackinterval = 0;
@@ -43,7 +43,6 @@ function whitePause() {
 
     }
 }
-
 function blakcPause() {
     if (blackinterval === 0) {
         blackinterval = setInterval(function () {

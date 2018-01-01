@@ -90,30 +90,33 @@ document.addEventListener('DOMContentLoaded', () => {
             if (turn % 2 !== 0) {
                 if (el.classList.contains('white') || el.classList.contains('black')) {
                     alert("이미바둑알이있습니다.");
+                    turn+= 2;
                 } else {
                     el.classList.add('white');
-                    // blakcPause();
-                    // whitetimeReset();
+                    blakcPause();
+                    whitetimeReset();
                     let wrr = new Array();
                     wrr.push(Number(el.closest('.row').classList[0].slice(4, 7)), Number(el.classList[0].slice(4, 7)));
                     wrows.push(wrr);
                     judgewhite();
+                    turn++;
                 };
-                turn++;
+                
             } else {
                 if (el.classList.contains('white') || el.classList.contains('black')) {
                     alert("이미바둑알이있습니다.");
+                    turn += 2;
                 } else {
                     el.classList.add('black');
-                    // whitePause();
-                    // blacktimeReset(); 
-
+                    whitePause();
+                    blacktimeReset(); 
                     let brr = new Array();
                     brr.push(Number(el.closest('.row').classList[0].slice(4, 7)), Number(el.classList[0].slice(4, 7)));
                     brows.push(brr);
                     judgebalck();
+                    turn++;
                 };
-                turn++;
+                
             };
         });
     });

@@ -113,8 +113,9 @@ body {
 
 .container {
     width: 100%;
-    background-color: #F37A78;
+    background-color: RGBA(56, 62, 67, 1.00);
     height: 100vh;
+    
 }
 
 .title {
@@ -124,15 +125,16 @@ body {
     padding-top: 10px;
     font-size: 30px;
     font-weight: bold;
-    color: antiquewhite;
+    color: black;
+    line-height: 80px;
     margin: 0 auto;
 }
 
 .board {
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
     background-color: #ffc078;
-    box-shadow: 1px 2px 2px #a3a3a3;
+    box-shadow: 0px 30px 80px rgba(0, 0, 0, .65);
 }
 
 .row {
@@ -241,25 +243,33 @@ body {
 
 
 .wrap {
-    width: 700px;
+    width: 900px;
     margin: 0 auto;
 }
 
 .countwrap {
     position: relative;
-    height: 130px;
-    text-align: center;
+  
 }
 
 
 /* svg */
 
 .whitetimer {
-    display: inline-block;
+    position: absolute;
+    top: 90px;
+ 
+}
+.progress{
+    border-radius: 50%;
+ box-shadow : -20px 20px 50px rgba(0, 0, 0, .65);
 }
 
 .blacktimer {
-    display: inline-block;
+    position: absolute;
+    top: 90px;
+    right: 0;
+
 }
 
 .progress {
@@ -288,23 +298,24 @@ body {
 }
 
 .whitecounttxt{
-     font-size: 30px;
+     font-size: 40px;
      
 }
 .blackcounttxt {
-    font-size: 30px;
+    font-size: 40px;
     
 }
 
 .limit1 {
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
+     border-radius: 50%;
+     box-shadow: -20px 20px 50px rgba(0, 0, 0, .65);
 }
-.limitwrap{
-    display: inline-block;
-}
+
 .limit {  
     stroke: #ffffff;
+    
 }
 .limit2{
       stroke: #000000;
@@ -319,7 +330,11 @@ body {
     stroke: #f77a52;
     stroke-linecap: round;
 }
-.whitelimit,
+.whitelimit{
+    position: absolute;
+    left: 40px;
+}
 .blacklimit {
-    display: inline-block;
+    position: absolute;
+    right: 40px;
 }

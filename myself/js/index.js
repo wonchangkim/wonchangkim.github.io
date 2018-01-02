@@ -8,6 +8,8 @@ moment.locale('ko');
 const nowtime = moment().format('LT');
 console.log(nowtime);
 
+let answerArry = [[이름,김원창],[어디,일산살]];
+
 
 function myFunction() {
     let chatarea = document.querySelector('.chat-messages-list');
@@ -18,6 +20,7 @@ function myFunction() {
     node.innerHTML = `<span class="txttime">${nowtime}</span> 
     <span class="anwtext reschatbubble">${txt.value}</span>`;
     document.querySelector('.inputform').reset();
+
 }
 
 

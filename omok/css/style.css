@@ -363,17 +363,15 @@ body {
   border-radius: 10px;
   padding: 15px 0px 15px 0px;
   background-color: RGBA(56, 62, 67, 1.00);
-
-
   z-index: 99;
   opacity: 0;
 
 }
 
 .showing {
-  top: 300px;
+  top: 250px;
   opacity: 1;
-  transition: all 1s ease-in;
+  transition: all 0.34s ease-in;
 }
 
 .victorytxt {

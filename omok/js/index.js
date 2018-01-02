@@ -268,6 +268,4 @@ function init() {
      el.remove('black');
     }
   });
-
-
 }

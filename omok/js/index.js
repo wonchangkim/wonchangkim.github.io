@@ -112,6 +112,17 @@ function vicblack() {
     document.querySelector('.victoryradius').classList.add('victoryradiusbalck');
   }
 }
+let vicbtn = document.querySelector('.victorybutton');
+vicbtn.addEventListener('click',e =>{
+  if (victory.classList.contains('victoryshow')){
+    victory.classList.remove('victoryshow');
+  }
+  if (content.classList.contains('showing')){
+    content.classList.remove('showing');
+  }
+  init();
+});
+
 //게임세팅
 let turn = 1;
 let wrows = new Array();
@@ -244,4 +255,19 @@ function judgebalck() {
             }
         }
     }
+}
+
+//리셋
+function init() {
+  turn = 1;
+  wrows = [];
+  brows = [];
+  document.querySelectorAll('.col').forEach(el => {
+    if (el.classList.contains('white') || el.classList.contains('black')) {
+      el.remove('white');
+     el.remove('black');
+    }
+  });
+
+
 }

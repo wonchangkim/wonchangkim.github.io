@@ -93,9 +93,25 @@ function vicwhite(){
 
   }else{
     content.classList.add('showing');
+    document.querySelector('.victorytxt').textContent = '화이트가 이겼습니다.';
   }
 }
+function vicblack() {
+  if (victory.classList.contains('victoryshow')) {
 
+  } else {
+    victory.classList.add('victoryshow');
+    clearInterval(whiteinterval);
+    whiteinterval = 0;
+  }
+  if (content.classList.contains('showing')) {
+
+  } else {
+    content.classList.add('showing');
+    document.querySelector('.victorytxt').textContent = '블랙이 이겼습니다.';
+    document.querySelector('.victoryradius').classList.add('victoryradiusbalck');
+  }
+}
 //게임세팅
 let turn = 1;
 let wrows = new Array();
@@ -223,8 +239,8 @@ function judgebalck() {
                 console.log(samediagonalarryblack1);
             }
             if (samediagonalarryblack[brows[i]].length >= 4 || samediagonalarryblack1[brows[i]].length >= 4 || samecolblack[brows[i]].length >= 4 || samerowblack[brows[i]].length >= 4) {
-                alert('블랙승리');
-                break;
+              vicblack();
+
             }
         }
     }

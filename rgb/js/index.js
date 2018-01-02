@@ -78,12 +78,8 @@ document.querySelectorAll('.box').forEach((el, index) => {
   el.addEventListener('click', e => {
     if (index === correctAnswer) {
       correct();
-      // nextStage();
-      // draw();
     } else {
       wrong();
-      // init();
-      // draw();
     }
   });
 })

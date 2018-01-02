@@ -89,5 +89,5 @@ document.querySelectorAll('.box').forEach((el, index) => {
 })
 
 
-init()
+init();
 draw();

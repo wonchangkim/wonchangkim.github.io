@@ -355,7 +355,7 @@ body {
 
 .victorycontent {
   position: absolute;
-  top: 0px;
+  top: -300px;
   left: 50%;
   transform: translateX(-50%);
   width: 500px;

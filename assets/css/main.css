@@ -1415,7 +1415,9 @@ pre code {
   -webkit-border-radius: 100%;
           border-radius: 100%;
 }
-
+.author-logo{
+  
+}
 .author-box .author-desc h2 {
   margin: 0 0 10px;
 }

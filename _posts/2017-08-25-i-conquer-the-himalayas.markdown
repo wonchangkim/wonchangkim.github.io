@@ -15,6 +15,7 @@ author: wonchangkim # Add name author (optional)
     - then 자체가 promise 반환
     - 콜백안에서 promise를 반환하면 아래쪽 then promise반환값을 사용
 - promise를 사용하면 비동기 작업을 연이어서 하는것이 쉬워진다.
+
 ```js
 // Promise 객체를 반환하는 함수
 function delay(ms) {
@@ -25,14 +26,13 @@ function delay(ms) {
     }, ms);
   });
 }
-
 delay(1000)
   .then(() => delay(2000))
   .then(() => Promise.resolve('끝'))
   .then(console.log);
-
 console.log('시작');
 ```
+
 ### fetch(최신버전 브라우저)
 - fetch함수의 결과는 promise. response라는 객체가 들어간다.
 

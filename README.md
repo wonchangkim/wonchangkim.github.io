@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Adam Blog is a minimal clear theme for Jekyll
 
 ![Adam Blog - Imac](https://github.com/artemsheludko/adam-blog/blob/master/assets/img/adam-blog-imac.jpg?raw=true)
@@ -31,6 +30,3 @@ Fork the ``master`` branch and delete ``gh-pages`` branch in it. This is importa
 ### License
 
 GNU General Public License v3.0
-=======
-# wonchangkim.github.io
->>>>>>> 4447e9260b40b08965bed2e6545b4e4184844629

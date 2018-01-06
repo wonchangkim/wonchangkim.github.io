@@ -11,7 +11,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # Author settings
 author: wonchangkim # add your name
 author-pic: githublogo.jpg
-author-logo: logoblack.png
+author-logo: logoblack
 about-author: 많이 하면 할수록 많이 할수 있다.
 
 # Contact links

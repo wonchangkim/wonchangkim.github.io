@@ -10,10 +10,9 @@
         <span class="menu-icon-close">
           <i class="fa fa-times" aria-hidden="true"></i>
         </span>
+
+        <img src="{{site.baseurl}}/assets/img/{site.author-pic}" class="author-circle">
         <ul>
-          
-           <img src="{{site.baseurl}}/assets/img/{site.author-pic %}" class="author-circle">
-          
           <li>
             <a href="{{site.baseurl}}/">Blog</a>
           </li>
@@ -26,7 +25,10 @@
         </ul>
       </nav>
       <p class="logo">
-        <a href="{{site.baseurl}}/"><img src="{{site.baseurl}}/assets/img/{% if site.author-logo %}{{site.author-logo}}{% endif %}" alt="{{site.author-logo}}" class="author-logo"></a>
+        <a href="{{site.baseurl}}/">
+          <img src="{{site.baseurl}}/assets/img/{% if site.author-logo %}{{site.author-logo}}{% endif %}" alt="{{site.author-logo}}"
+            class="author-logo">
+        </a>
       </p>
       <div class="search-icon-container">
         <span class="search-icon">
